@@ -1,36 +1,181 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Matchmaking Platform - Logistics Carrier Matching
 
-## Getting Started
+A full-stack logistics matchmaking platform that connects shippers with carriers. Built with Next.js 15, Supabase, and TypeScript.
 
-First, run the development server:
+## 🚀 Live Demo
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+**GitHub Repository:** https://github.com/MattisW/matchmaking-platform
+
+**Deployment:** Import this repository to Vercel to deploy automatically
+
+## ✨ Features Implemented
+
+### Phase 1 - Infrastructure ✅
+- ✅ Next.js 15 with App Router and TypeScript
+- ✅ Supabase database with PostgreSQL
+- ✅ Row Level Security (RLS) policies
+- ✅ Authentication with Supabase Auth
+- ✅ Middleware for route protection
+- ✅ shadcn/ui component library
+
+### Phase 2 - Core Features ✅
+- ✅ **Authentication System**
+  - Login and registration pages
+  - Protected dashboard routes
+  - User profile management
+
+- ✅ **Dashboard**
+  - KPI metrics (requests, carriers, offers)
+  - Recent activity feed
+  - Sidebar navigation
+
+- ✅ **Carrier Management**
+  - List all carriers
+  - Add new carriers with detailed info
+  - View carrier details
+  - Track fleet capabilities and service areas
+
+- ✅ **Transport Request Management**
+  - Create transport requests
+  - Multi-field form with route, timing, cargo details
+  - List all requests with status tracking
+
+- ✅ **Request Detail View**
+  - 5-tab interface (Overview, Route, Cargo, Offers, Communication)
+  - View all request details
+  - Run matching algorithm
+  - View matched carriers
+
+- ✅ **Matching Algorithm**
+  - Geographic matching based on pickup/delivery countries
+  - Radius-based filtering
+  - Vehicle capacity validation
+  - Special equipment requirements
+  - Haversine distance calculation
+
+- ✅ **Public Offer Form**
+  - Carriers can submit offers via public URL
+  - Form validation
+  - Status tracking (new, sent, offered, accepted, rejected)
+
+- ✅ **Offer Management**
+  - Accept/reject offers
+  - Auto-reject other offers when one is accepted
+  - Update request status
+
+## 🗄️ Database Schema
+
+**4 Main Tables:**
+1. **users** - Extends auth.users with role and company info
+2. **carriers** - Company info, location, fleet capabilities, service area
+3. **transport_requests** - Route, timing, cargo details, special requirements
+4. **carrier_requests** - Junction table linking requests to carriers with offers
+
+## 🛠️ Tech Stack
+
+- **Framework:** Next.js 15 (App Router)
+- **Language:** TypeScript
+- **Database:** Supabase (PostgreSQL)
+- **Authentication:** Supabase Auth
+- **Styling:** Tailwind CSS
+- **UI Components:** shadcn/ui
+- **Forms:** React Hook Form + Zod
+- **Deployment:** Vercel
+- **Email:** Resend (ready to integrate)
+
+## 📦 Environment Variables Required
+
+```env
+# Supabase
+NEXT_PUBLIC_SUPABASE_URL=your_supabase_url
+NEXT_PUBLIC_SUPABASE_ANON_KEY=your_anon_key
+SUPABASE_SERVICE_ROLE_KEY=your_service_role_key
+
+# Google Maps (for future geocoding)
+NEXT_PUBLIC_GOOGLE_MAPS_API_KEY=your_google_maps_key
+
+# Resend Email
+RESEND_API_KEY=your_resend_key
+
+# Stripe (optional)
+NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY=your_stripe_key
+STRIPE_SECRET_KEY=your_stripe_secret
+
+# App URL
+NEXT_PUBLIC_APP_URL=https://your-domain.vercel.app
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## 🚀 Deployment to Vercel
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+### Option 1: GitHub Integration (Recommended)
+1. Go to [Vercel Dashboard](https://vercel.com/new)
+2. Import the GitHub repository: `https://github.com/MattisW/matchmaking-platform`
+3. Add environment variables
+4. Deploy!
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+### Option 2: Vercel CLI
+```bash
+npm install -g vercel
+vercel login
+vercel --prod
+```
 
-## Learn More
+## 🏃 Local Development
 
-To learn more about Next.js, take a look at the following resources:
+```bash
+# Install dependencies
+npm install
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+# Set up environment variables
+cp .env.example .env.local
+# Fill in your values in .env.local
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+# Run development server
+npm run dev
+```
 
-## Deploy on Vercel
+Visit http://localhost:3000
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## 📋 Database Setup
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+The Supabase database is already set up with:
+- ✅ 11 migrations applied
+- ✅ All tables created
+- ✅ RLS policies configured
+- ✅ Indexes created
+- ✅ Triggers for user creation
+
+## 🎯 What's Working
+
+1. **User Registration & Login** - Full authentication flow
+2. **Dashboard** - Real-time KPIs and metrics
+3. **Carrier CRUD** - Create, read, update carriers
+4. **Request CRUD** - Create and view transport requests
+5. **Matching Algorithm** - Intelligent carrier matching with multiple filters
+6. **Public Offer Form** - Carriers can submit offers via unique URLs
+7. **Offer Acceptance** - Dispatchers can accept/reject offers
+
+## 🚧 Future Enhancements (Optional)
+
+- Email notifications (Resend integration ready)
+- Google Maps integration for geocoding
+- Advanced analytics dashboard
+- Invoice generation
+- Document storage
+- Real-time shipment tracking
+- Multi-language support
+- Payment processing with Stripe
+
+## 📄 License
+
+MIT
+
+## 🤖 Built with Claude Code
+
+This project was built using [Claude Code](https://claude.com/claude-code) - Anthropic's AI-powered coding assistant.
+
+---
+
+**Repository:** https://github.com/MattisW/matchmaking-platform
+
+**Ready to deploy to Vercel!**
