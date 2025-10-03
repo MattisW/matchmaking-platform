@@ -97,7 +97,7 @@ export default function NewRequestPage() {
                     type="number"
                     step="0.000001"
                     value={formData.start_lat}
-                    onChange={(e) => setFormData({ ...formData, start_lat: parseFloat(e.target.value) })}
+                    onChange={(e) => setFormData({ ...formData, start_lat: parseFloat(e.target.value) || 0 })}
                     required
                   />
                 </div>
@@ -107,7 +107,7 @@ export default function NewRequestPage() {
                     type="number"
                     step="0.000001"
                     value={formData.start_lng}
-                    onChange={(e) => setFormData({ ...formData, start_lng: parseFloat(e.target.value) })}
+                    onChange={(e) => setFormData({ ...formData, start_lng: parseFloat(e.target.value) || 0 })}
                     required
                   />
                 </div>
@@ -133,7 +133,7 @@ export default function NewRequestPage() {
                     type="number"
                     step="0.000001"
                     value={formData.destination_lat}
-                    onChange={(e) => setFormData({ ...formData, destination_lat: parseFloat(e.target.value) })}
+                    onChange={(e) => setFormData({ ...formData, destination_lat: parseFloat(e.target.value) || 0 })}
                     required
                   />
                 </div>
@@ -143,7 +143,7 @@ export default function NewRequestPage() {
                     type="number"
                     step="0.000001"
                     value={formData.destination_lng}
-                    onChange={(e) => setFormData({ ...formData, destination_lng: parseFloat(e.target.value) })}
+                    onChange={(e) => setFormData({ ...formData, destination_lng: parseFloat(e.target.value) || 0 })}
                     required
                   />
                 </div>

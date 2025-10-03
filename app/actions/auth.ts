@@ -17,7 +17,7 @@ export async function signIn(email: string, password: string) {
   }
 
   revalidatePath('/', 'layout')
-  redirect('/dashboard')
+  return { success: true }
 }
 
 export async function signUp(email: string, password: string, companyName?: string) {
@@ -38,7 +38,7 @@ export async function signUp(email: string, password: string, companyName?: stri
   }
 
   revalidatePath('/', 'layout')
-  redirect('/dashboard')
+  return { success: true }
 }
 
 export async function signOut() {

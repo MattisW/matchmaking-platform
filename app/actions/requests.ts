@@ -8,10 +8,23 @@ export async function createRequest(data: any) {
 
   const { data: { user } } = await supabase.auth.getUser()
 
-  const { error } = await supabase.from('transport_requests').insert([{
+  // Convert empty strings to null for timestamp and numeric fields
+  const sanitizedData = {
     ...data,
+    delivery_date_from: data.delivery_date_from || null,
+    delivery_date_to: data.delivery_date_to || null,
+    pickup_date_from: data.pickup_date_from || null,
+    pickup_date_to: data.pickup_date_to || null,
+    distance_km: data.distance_km || null,
+    cargo_length_cm: data.cargo_length_cm || null,
+    cargo_width_cm: data.cargo_width_cm || null,
+    cargo_height_cm: data.cargo_height_cm || null,
+    cargo_weight_kg: data.cargo_weight_kg || null,
+    loading_meters: data.loading_meters || null,
     customer_id: user?.id,
-  }])
+  }
+
+  const { error } = await supabase.from('transport_requests').insert([sanitizedData])
 
   if (error) {
     return { error: error.message }

@@ -38,10 +38,13 @@ export default function RegisterPage() {
 
       if (result?.error) {
         toast.error(result.error)
+        setIsLoading(false)
+      } else if (result?.success) {
+        toast.success('Account created successfully!')
+        router.push('/dashboard')
       }
     } catch (error) {
       toast.error('An unexpected error occurred')
-    } finally {
       setIsLoading(false)
     }
   }

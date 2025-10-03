@@ -151,7 +151,7 @@ export default function NewCarrierPage() {
                     type="number"
                     step="0.000001"
                     value={formData.lat}
-                    onChange={(e) => setFormData({ ...formData, lat: parseFloat(e.target.value) })}
+                    onChange={(e) => setFormData({ ...formData, lat: parseFloat(e.target.value) || 0 })}
                     required
                   />
                 </div>
@@ -162,7 +162,7 @@ export default function NewCarrierPage() {
                     type="number"
                     step="0.000001"
                     value={formData.lng}
-                    onChange={(e) => setFormData({ ...formData, lng: parseFloat(e.target.value) })}
+                    onChange={(e) => setFormData({ ...formData, lng: parseFloat(e.target.value) || 0 })}
                     required
                   />
                 </div>
