@@ -1,0 +1,80 @@
+<% content_for :page_title, "Dashboard" %>
+
+<!-- Metrics Cards -->
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
+  <div class="bg-white rounded-lg shadow p-6">
+    <h3 class="text-gray-500 text-sm font-medium">Total Requests</h3>
+    <p class="text-3xl font-bold text-gray-900 mt-2"><%= @total_requests %></p>
+  </div>
+
+  <div class="bg-white rounded-lg shadow p-6">
+    <h3 class="text-gray-500 text-sm font-medium">Active Requests</h3>
+    <p class="text-3xl font-bold text-blue-600 mt-2"><%= @active_requests %></p>
+  </div>
+
+  <div class="bg-white rounded-lg shadow p-6">
+    <h3 class="text-gray-500 text-sm font-medium">Active Carriers</h3>
+    <p class="text-3xl font-bold text-green-600 mt-2"><%= @total_carriers %></p>
+  </div>
+
+  <div class="bg-white rounded-lg shadow p-6">
+    <h3 class="text-gray-500 text-sm font-medium">Pending Offers</h3>
+    <p class="text-3xl font-bold text-yellow-600 mt-2"><%= @pending_offers %></p>
+  </div>
+</div>
+
+<!-- Recent Requests -->
+<div class="bg-white rounded-lg shadow">
+  <div class="px-6 py-4 border-b border-gray-200 flex justify-between items-center">
+    <h2 class="text-xl font-semibold text-gray-800">Recent Requests</h2>
+    <%= link_to "New Request", new_admin_transport_request_path, class: "bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700" %>
+  </div>
+
+  <div class="overflow-x-auto">
+    <table class="min-w-full divide-y divide-gray-200">
+      <thead class="bg-gray-50">
+        <tr>
+          <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Route</th>
+          <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Pickup Date</th>
+          <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Status</th>
+          <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Distance</th>
+          <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Actions</th>
+        </tr>
+      </thead>
+      <tbody class="bg-white divide-y divide-gray-200">
+        <% @recent_requests.each do |request| %>
+          <tr>
+            <td class="px-6 py-4 whitespace-nowrap">
+              <div class="text-sm font-medium text-gray-900">
+                <%= request.start_country %> → <%= request.destination_country %>
+              </div>
+              <div class="text-sm text-gray-500">
+                <%= request.start_address&.truncate(30) %>
+              </div>
+            </td>
+            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
+              <%= request.pickup_date_from&.strftime('%d.%m.%Y') %>
+            </td>
+            <td class="px-6 py-4 whitespace-nowrap">
+              <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full
+                <%= case request.status
+                    when 'new' then 'bg-gray-100 text-gray-800'
+                    when 'matching' then 'bg-yellow-100 text-yellow-800'
+                    when 'matched' then 'bg-green-100 text-green-800'
+                    else 'bg-blue-100 text-blue-800'
+                    end %>">
+                <%= request.status&.titleize %>
+              </span>
+            </td>
+            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
+              <%= request.distance_km %> km
+            </td>
+            <td class="px-6 py-4 whitespace-nowrap text-sm font-medium">
+              <%= link_to "View", admin_transport_request_path(request), class: "text-blue-600 hover:text-blue-900" %>
+            </td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>

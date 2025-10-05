@@ -1,0 +1,63 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  user: one
+  status: MyString
+  start_country: MyString
+  start_address: MyText
+  start_latitude: 9.99
+  start_longitude: 9.99
+  destination_country: MyString
+  destination_address: MyText
+  destination_latitude: 9.99
+  destination_longitude: 9.99
+  distance_km: 1
+  pickup_date_from: 2025-10-05 16:58:51
+  pickup_date_to: 2025-10-05 16:58:51
+  delivery_date_from: 2025-10-05 16:58:51
+  delivery_date_to: 2025-10-05 16:58:51
+  vehicle_type: MyString
+  cargo_length_cm: 1
+  cargo_width_cm: 1
+  cargo_height_cm: 1
+  cargo_weight_kg: 1
+  loading_meters: 9.99
+  requires_liftgate: false
+  requires_pallet_jack: false
+  requires_side_loading: false
+  requires_tarp: false
+  requires_gps_tracking: false
+  driver_language: MyString
+  matchmaking_status: MyString
+  matched_carrier: one
+
+two:
+  user: two
+  status: MyString
+  start_country: MyString
+  start_address: MyText
+  start_latitude: 9.99
+  start_longitude: 9.99
+  destination_country: MyString
+  destination_address: MyText
+  destination_latitude: 9.99
+  destination_longitude: 9.99
+  distance_km: 1
+  pickup_date_from: 2025-10-05 16:58:51
+  pickup_date_to: 2025-10-05 16:58:51
+  delivery_date_from: 2025-10-05 16:58:51
+  delivery_date_to: 2025-10-05 16:58:51
+  vehicle_type: MyString
+  cargo_length_cm: 1
+  cargo_width_cm: 1
+  cargo_height_cm: 1
+  cargo_weight_kg: 1
+  loading_meters: 9.99
+  requires_liftgate: false
+  requires_pallet_jack: false
+  requires_side_loading: false
+  requires_tarp: false
+  requires_gps_tracking: false
+  driver_language: MyString
+  matchmaking_status: MyString
+  matched_carrier: two

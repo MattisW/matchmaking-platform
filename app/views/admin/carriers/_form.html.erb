@@ -1,0 +1,71 @@
+<%= form_with(model: [:admin, @carrier], local: true, class: "space-y-6") do |f| %>
+  <% if @carrier.errors.any? %>
+    <div class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded">
+      <h2 class="font-bold"><%= pluralize(@carrier.errors.count, "error") %> prohibited this carrier from being saved:</h2>
+      <ul class="list-disc list-inside">
+        <% @carrier.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+    <div>
+      <%= f.label :company_name, class: "block text-sm font-medium text-gray-700 mb-2" %>
+      <%= f.text_field :company_name, class: "w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500" %>
+    </div>
+
+    <div>
+      <%= f.label :contact_email, class: "block text-sm font-medium text-gray-700 mb-2" %>
+      <%= f.email_field :contact_email, class: "w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500" %>
+    </div>
+
+    <div>
+      <%= f.label :contact_phone, class: "block text-sm font-medium text-gray-700 mb-2" %>
+      <%= f.text_field :contact_phone, class: "w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500" %>
+    </div>
+
+    <div>
+      <%= f.label :language, class: "block text-sm font-medium text-gray-700 mb-2" %>
+      <%= f.select :language, [['German', 'de'], ['English', 'en'], ['French', 'fr']], { include_blank: 'Select language' }, class: "w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500" %>
+    </div>
+
+    <div>
+      <%= f.label :country, class: "block text-sm font-medium text-gray-700 mb-2" %>
+      <%= f.text_field :country, class: "w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500" %>
+    </div>
+
+    <div>
+      <%= f.label :pickup_radius_km, "Pickup Radius (km)", class: "block text-sm font-medium text-gray-700 mb-2" %>
+      <%= f.number_field :pickup_radius_km, class: "w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500" %>
+    </div>
+  </div>
+
+  <div>
+    <%= f.label :address, class: "block text-sm font-medium text-gray-700 mb-2" %>
+    <%= f.text_area :address, rows: 2, class: "w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500" %>
+  </div>
+
+  <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+    <div class="flex items-center">
+      <%= f.check_box :has_transporter, class: "h-4 w-4 text-blue-600 focus:ring-blue-500 border-gray-300 rounded" %>
+      <%= f.label :has_transporter, class: "ml-2 text-sm text-gray-900" %>
+    </div>
+
+    <div class="flex items-center">
+      <%= f.check_box :has_lkw, class: "h-4 w-4 text-blue-600 focus:ring-blue-500 border-gray-300 rounded" %>
+      <%= f.label :has_lkw, "Has LKW", class: "ml-2 text-sm text-gray-900" %>
+    </div>
+
+    <div class="flex items-center">
+      <%= f.check_box :has_liftgate, class: "h-4 w-4 text-blue-600 focus:ring-blue-500 border-gray-300 rounded" %>
+      <%= f.label :has_liftgate, class: "ml-2 text-sm text-gray-900" %>
+    </div>
+  </div>
+
+  <div class="flex justify-end space-x-4">
+    <%= link_to "Cancel", admin_carriers_path, class: "px-4 py-2 border border-gray-300 rounded-md text-gray-700 hover:bg-gray-50" %>
+    <%= f.submit class: "px-6 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 font-medium" %>
+  </div>
+<% end %>

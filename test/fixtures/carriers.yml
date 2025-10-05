@@ -1,0 +1,51 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  company_name: MyString
+  contact_email: MyString
+  contact_phone: MyString
+  preferred_contact_method: MyString
+  language: MyString
+  country: MyString
+  address: MyText
+  latitude: 9.99
+  longitude: 9.99
+  pickup_radius_km: 1
+  ignore_radius: false
+  has_transporter: false
+  has_lkw: false
+  lkw_length_cm: 1
+  lkw_width_cm: 1
+  lkw_height_cm: 1
+  has_liftgate: false
+  has_pallet_jack: false
+  has_gps_tracking: false
+  blacklisted: false
+  rating_communication: 9.99
+  rating_punctuality: 9.99
+  notes: MyText
+
+two:
+  company_name: MyString
+  contact_email: MyString
+  contact_phone: MyString
+  preferred_contact_method: MyString
+  language: MyString
+  country: MyString
+  address: MyText
+  latitude: 9.99
+  longitude: 9.99
+  pickup_radius_km: 1
+  ignore_radius: false
+  has_transporter: false
+  has_lkw: false
+  lkw_length_cm: 1
+  lkw_width_cm: 1
+  lkw_height_cm: 1
+  has_liftgate: false
+  has_pallet_jack: false
+  has_gps_tracking: false
+  blacklisted: false
+  rating_communication: 9.99
+  rating_punctuality: 9.99
+  notes: MyText

@@ -1,0 +1,77 @@
+<% content_for :page_title, "Carrier Offers" %>
+
+<div class="bg-white rounded-lg shadow p-6">
+  <h1 class="text-2xl font-bold mb-6">All Carrier Offers</h1>
+
+  <div class="overflow-x-auto">
+    <table class="min-w-full divide-y divide-gray-200">
+      <thead class="bg-gray-50">
+        <tr>
+          <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Request</th>
+          <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Carrier</th>
+          <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Distance</th>
+          <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Status</th>
+          <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Offered Price</th>
+          <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Actions</th>
+        </tr>
+      </thead>
+      <tbody class="bg-white divide-y divide-gray-200">
+        <% @carrier_requests.each do |cr| %>
+          <tr>
+            <td class="px-6 py-4 text-sm text-gray-900">
+              <%= link_to "##{cr.transport_request.id}", admin_transport_request_path(cr.transport_request), class: "text-blue-600 hover:text-blue-900" %><br>
+              <span class="text-xs text-gray-500">
+                <%= cr.transport_request.start_address.split(',').first %> →
+                <%= cr.transport_request.destination_address.split(',').first %>
+              </span>
+            </td>
+            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
+              <%= cr.carrier.company_name %>
+            </td>
+            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+              <%= cr.distance_to_pickup_km&.round(1) %> km
+            </td>
+            <td class="px-6 py-4 whitespace-nowrap">
+              <% case cr.status %>
+              <% when 'offered' %>
+                <span class="px-2 py-1 text-xs font-semibold rounded-full bg-blue-100 text-blue-800">
+                  Offered
+                </span>
+              <% when 'won' %>
+                <span class="px-2 py-1 text-xs font-semibold rounded-full bg-green-100 text-green-800">
+                  Accepted
+                </span>
+              <% when 'rejected' %>
+                <span class="px-2 py-1 text-xs font-semibold rounded-full bg-red-100 text-red-800">
+                  Rejected
+                </span>
+              <% else %>
+                <span class="px-2 py-1 text-xs font-semibold rounded-full bg-gray-100 text-gray-800">
+                  <%= cr.status&.titleize %>
+                </span>
+              <% end %>
+            </td>
+            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+              <% if cr.offered_price %>
+                €<%= number_with_precision(cr.offered_price, precision: 2) %>
+              <% else %>
+                -
+              <% end %>
+            </td>
+            <td class="px-6 py-4 whitespace-nowrap text-sm font-medium">
+              <% if cr.status == 'offered' %>
+                <%= button_to "Accept", accept_admin_carrier_request_path(cr), method: :post, class: "text-green-600 hover:text-green-900 mr-2", form: { data: { turbo_confirm: "Accept this offer?" } } %>
+              <% end %>
+            </td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+
+  <% if @carrier_requests.respond_to?(:total_pages) %>
+    <div class="mt-6">
+      <%= paginate @carrier_requests %>
+    </div>
+  <% end %>
+</div>

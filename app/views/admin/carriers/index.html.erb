@@ -1,0 +1,50 @@
+<% content_for :page_title, "Carriers" %>
+
+<div class="mb-4 flex justify-between items-center">
+  <%= link_to "New Carrier", new_admin_carrier_path, class: "bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700" %>
+</div>
+
+<div class="bg-white rounded-lg shadow overflow-hidden">
+  <table class="min-w-full divide-y divide-gray-200">
+    <thead class="bg-gray-50">
+      <tr>
+        <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Company</th>
+        <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Email</th>
+        <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Country</th>
+        <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Fleet</th>
+        <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Actions</th>
+      </tr>
+    </thead>
+    <tbody class="bg-white divide-y divide-gray-200">
+      <% @carriers.each do |carrier| %>
+        <tr>
+          <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
+            <%= carrier.company_name %>
+          </td>
+          <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+            <%= carrier.contact_email %>
+          </td>
+          <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+            <%= carrier.country %>
+          </td>
+          <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+            <% if carrier.has_transporter %>
+              <span class="bg-blue-100 text-blue-800 px-2 py-1 rounded text-xs mr-1">Transporter</span>
+            <% end %>
+            <% if carrier.has_lkw %>
+              <span class="bg-green-100 text-green-800 px-2 py-1 rounded text-xs">LKW</span>
+            <% end %>
+          </td>
+          <td class="px-6 py-4 whitespace-nowrap text-sm font-medium">
+            <%= link_to "View", admin_carrier_path(carrier), class: "text-blue-600 hover:text-blue-900 mr-3" %>
+            <%= link_to "Edit", edit_admin_carrier_path(carrier), class: "text-yellow-600 hover:text-yellow-900" %>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
+
+<div class="mt-4">
+  <%== pagy_nav(@pagy) if defined?(@pagy) %>
+</div>

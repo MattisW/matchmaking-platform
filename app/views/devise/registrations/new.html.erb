@@ -1,0 +1,107 @@
+<div class="min-h-screen flex bg-gray-50">
+  <!-- Left side - Sign Up Form -->
+  <div class="flex-1 flex flex-col justify-center py-12 px-4 sm:px-6 lg:px-20 xl:px-24">
+    <div class="mx-auto w-full max-w-sm lg:w-96">
+      <div class="mb-8">
+        <div class="flex items-center mb-6">
+          <div class="w-10 h-10 bg-blue-600 rounded flex items-center justify-center text-white font-bold text-xl mr-3">
+            M
+          </div>
+          <h1 class="text-2xl font-bold text-gray-900">Matchmaking Platform</h1>
+        </div>
+        <h2 class="text-3xl font-bold text-gray-900">Create your account</h2>
+        <p class="mt-2 text-sm text-gray-600">
+          Start connecting shippers with carriers
+        </p>
+      </div>
+
+      <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+        <%= render "devise/shared/error_messages", resource: resource %>
+
+        <div class="space-y-6">
+          <div>
+            <%= f.label :company_name, "Company name", class: "block text-sm font-medium text-gray-700 mb-2" %>
+            <%= f.text_field :company_name, autofocus: true, autocomplete: "organization", placeholder: "Your company name",
+                class: "w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent" %>
+          </div>
+
+          <div>
+            <%= f.label :email, "Email address", class: "block text-sm font-medium text-gray-700 mb-2" %>
+            <%= f.email_field :email, autocomplete: "email", placeholder: "name@example.com",
+                class: "w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent" %>
+          </div>
+
+          <div>
+            <%= f.label :password, class: "block text-sm font-medium text-gray-700 mb-2" do %>
+              Password
+              <% if @minimum_password_length %>
+                <span class="text-gray-500 font-normal">(<%= @minimum_password_length %> characters minimum)</span>
+              <% end %>
+            <% end %>
+            <%= f.password_field :password, autocomplete: "new-password", placeholder: "Create a password",
+                class: "w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent" %>
+          </div>
+
+          <div>
+            <%= f.label :password_confirmation, "Confirm password", class: "block text-sm font-medium text-gray-700 mb-2" %>
+            <%= f.password_field :password_confirmation, autocomplete: "new-password", placeholder: "Confirm your password",
+                class: "w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent" %>
+          </div>
+
+          <div>
+            <%= f.submit "Create account", class: "w-full bg-blue-600 text-white py-3 px-4 rounded-lg hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 font-medium transition-colors" %>
+          </div>
+        </div>
+      <% end %>
+
+      <div class="mt-6">
+        <p class="text-center text-sm text-gray-600">
+          Already have an account?
+          <%= link_to "Sign in", new_session_path(resource_name), class: "font-medium text-blue-600 hover:text-blue-500" %>
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Right side - Hero/Branding -->
+  <div class="hidden lg:flex lg:flex-1 bg-gradient-to-br from-blue-600 to-blue-800 relative overflow-hidden">
+    <div class="absolute inset-0 bg-grid-white/10"></div>
+    <div class="relative flex flex-col justify-center px-12 xl:px-20 text-white">
+      <div class="mb-8">
+        <h2 class="text-4xl font-bold mb-4">Join Our Platform</h2>
+        <p class="text-lg text-blue-100">
+          Get started with intelligent logistics matching today.
+        </p>
+      </div>
+      <div class="space-y-4">
+        <div class="flex items-start">
+          <svg class="w-6 h-6 mr-3 mt-1 text-blue-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+          </svg>
+          <div>
+            <h3 class="font-semibold mb-1">Free to Get Started</h3>
+            <p class="text-blue-100 text-sm">Create your account and start matching immediately</p>
+          </div>
+        </div>
+        <div class="flex items-start">
+          <svg class="w-6 h-6 mr-3 mt-1 text-blue-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+          </svg>
+          <div>
+            <h3 class="font-semibold mb-1">Intelligent Matching</h3>
+            <p class="text-blue-100 text-sm">Advanced algorithms find the best carriers for your needs</p>
+          </div>
+        </div>
+        <div class="flex items-start">
+          <svg class="w-6 h-6 mr-3 mt-1 text-blue-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+          </svg>
+          <div>
+            <h3 class="font-semibold mb-1">Streamlined Process</h3>
+            <p class="text-blue-100 text-sm">Automated invitations and offer management</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

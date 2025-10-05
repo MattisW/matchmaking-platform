@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+  </head>
+  <body style="font-family: Arial, sans-serif; line-height: 1.6; color: #333;">
+    <div style="max-width: 600px; margin: 0 auto; padding: 20px;">
+      <h1 style="color: #2563eb;">Neue Transportanfrage</h1>
+
+      <p>Hallo <%= @carrier.company_name %>,</p>
+
+      <p>Es gibt eine neue Transportanfrage, die zu Ihrem Profil passt:</p>
+
+      <div style="background: #f3f4f6; padding: 20px; margin: 20px 0; border-radius: 8px;">
+        <h2 style="margin-top: 0; color: #1f2937;">Route</h2>
+        <p><strong>Von:</strong> <%= @transport_request.start_address %> (<%= @transport_request.start_country %>)</p>
+        <p><strong>Nach:</strong> <%= @transport_request.destination_address %> (<%= @transport_request.destination_country %>)</p>
+        <p><strong>Entfernung:</strong> <%= @transport_request.distance_km %> km</p>
+      </div>
+
+      <div style="background: #f3f4f6; padding: 20px; margin: 20px 0; border-radius: 8px;">
+        <h2 style="margin-top: 0; color: #1f2937;">Zeitplan</h2>
+        <p><strong>Abholung:</strong> <%= @transport_request.pickup_date_from&.strftime('%d.%m.%Y') %></p>
+        <% if @transport_request.delivery_date_from %>
+          <p><strong>Lieferung:</strong> <%= @transport_request.delivery_date_from.strftime('%d.%m.%Y') %></p>
+        <% end %>
+      </div>
+
+      <div style="background: #f3f4f6; padding: 20px; margin: 20px 0; border-radius: 8px;">
+        <h2 style="margin-top: 0; color: #1f2937;">Fracht</h2>
+        <p><strong>Fahrzeugtyp:</strong> <%= @transport_request.vehicle_type&.upcase %></p>
+        <% if @transport_request.cargo_length_cm %>
+          <p><strong>Maße:</strong> <%= @transport_request.cargo_length_cm %> × <%= @transport_request.cargo_width_cm %> × <%= @transport_request.cargo_height_cm %> cm</p>
+        <% end %>
+        <% if @transport_request.cargo_weight_kg %>
+          <p><strong>Gewicht:</strong> <%= @transport_request.cargo_weight_kg %> kg</p>
+        <% end %>
+      </div>
+
+      <div style="margin: 30px 0; text-align: center;">
+        <a href="<%= @offer_url %>" style="background: #2563eb; color: white; padding: 14px 28px; text-decoration: none; border-radius: 6px; display: inline-block; font-weight: bold;">Angebot abgeben</a>
+      </div>
+
+      <p style="color: #6b7280; font-size: 14px; margin-top: 30px;">
+        Diese E-Mail wurde automatisch generiert. Bitte antworten Sie nicht auf diese E-Mail.
+      </p>
+    </div>
+  </body>
+</html>

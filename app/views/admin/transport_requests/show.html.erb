@@ -1,0 +1,85 @@
+<% content_for :page_title, "Request ##{@transport_request.id}" %>
+
+<div class="bg-white rounded-lg shadow p-6 mb-6">
+  <div class="flex justify-between items-center mb-6">
+    <h1 class="text-2xl font-bold">Transport Request #<%= @transport_request.id %></h1>
+    <div class="space-x-2">
+      <% if @transport_request.status == 'new' %>
+        <%= button_to "Run Matching", run_matching_admin_transport_request_path(@transport_request), method: :post, class: "px-4 py-2 bg-green-600 text-white rounded hover:bg-green-700" %>
+      <% end %>
+      <%= link_to "Back", admin_transport_requests_path, class: "px-4 py-2 bg-gray-500 text-white rounded hover:bg-gray-600" %>
+    </div>
+  </div>
+
+  <dl class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
+    <div>
+      <dt class="text-sm font-medium text-gray-500">From</dt>
+      <dd class="mt-1 text-sm text-gray-900"><%= @transport_request.start_address %> (<%= @transport_request.start_country %>)</dd>
+    </div>
+
+    <div>
+      <dt class="text-sm font-medium text-gray-500">To</dt>
+      <dd class="mt-1 text-sm text-gray-900"><%= @transport_request.destination_address %> (<%= @transport_request.destination_country %>)</dd>
+    </div>
+
+    <div>
+      <dt class="text-sm font-medium text-gray-500">Distance</dt>
+      <dd class="mt-1 text-sm text-gray-900"><%= @transport_request.distance_km %> km</dd>
+    </div>
+
+    <div>
+      <dt class="text-sm font-medium text-gray-500">Status</dt>
+      <dd class="mt-1">
+        <span class="px-2 py-1 text-xs font-semibold rounded-full <%= @transport_request.status == 'matched' ? 'bg-green-100 text-green-800' : 'bg-gray-100 text-gray-800' %>">
+          <%= @transport_request.status&.titleize %>
+        </span>
+      </dd>
+    </div>
+  </dl>
+
+  <% if @carrier_requests.any? %>
+    <h2 class="text-xl font-bold mt-8 mb-4">Matched Carriers (<%= @carrier_requests.count %>)</h2>
+    <div class="overflow-x-auto">
+      <table class="min-w-full divide-y divide-gray-200">
+        <thead class="bg-gray-50">
+          <tr>
+            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Carrier</th>
+            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Distance</th>
+            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Status</th>
+            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Offer</th>
+            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Actions</th>
+          </tr>
+        </thead>
+        <tbody class="bg-white divide-y divide-gray-200">
+          <% @carrier_requests.each do |cr| %>
+            <tr>
+              <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
+                <%= cr.carrier.company_name %>
+              </td>
+              <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                <%= cr.distance_to_pickup_km&.round(1) %> km
+              </td>
+              <td class="px-6 py-4 whitespace-nowrap">
+                <span class="px-2 py-1 text-xs font-semibold rounded-full bg-blue-100 text-blue-800">
+                  <%= cr.status %>
+                </span>
+              </td>
+              <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                <% if cr.offered_price %>
+                  €<%= cr.offered_price %>
+                <% else %>
+                  -
+                <% end %>
+              </td>
+              <td class="px-6 py-4 whitespace-nowrap text-sm font-medium">
+                <% if cr.status == 'offered' %>
+                  <%= button_to "Accept", accept_admin_carrier_request_path(cr), method: :post, class: "text-green-600 hover:text-green-900 mr-2" %>
+                <% end %>
+              </td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  <% end %>
+</div>

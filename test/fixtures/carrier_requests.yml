@@ -1,0 +1,33 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  transport_request: one
+  carrier: one
+  status: MyString
+  distance_to_pickup_km: 9.99
+  distance_to_delivery_km: 9.99
+  in_radius: false
+  email_sent_at: 2025-10-05 16:58:58
+  response_date: 2025-10-05 16:58:58
+  offered_price: 9.99
+  offered_delivery_date: 2025-10-05 16:58:58
+  transport_type: MyString
+  vehicle_type: MyString
+  driver_language: MyString
+  notes: MyText
+
+two:
+  transport_request: two
+  carrier: two
+  status: MyString
+  distance_to_pickup_km: 9.99
+  distance_to_delivery_km: 9.99
+  in_radius: false
+  email_sent_at: 2025-10-05 16:58:58
+  response_date: 2025-10-05 16:58:58
+  offered_price: 9.99
+  offered_delivery_date: 2025-10-05 16:58:58
+  transport_type: MyString
+  vehicle_type: MyString
+  driver_language: MyString
+  notes: MyText
