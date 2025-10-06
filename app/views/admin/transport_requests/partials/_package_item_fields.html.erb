@@ -1,0 +1,75 @@
+<%# This partial is used for both new records (via template) and existing records %>
+<div class="package-item bg-gray-50 border border-gray-200 rounded-lg p-4 mb-4">
+  <%= f.hidden_field :_destroy %>
+
+  <div class="flex justify-between items-start mb-4">
+    <h4 class="text-sm font-semibold text-gray-700">Package Item</h4>
+    <button type="button"
+            data-action="package-items#remove"
+            class="text-red-600 hover:text-red-800 text-sm font-medium">
+      − Remove Package
+    </button>
+  </div>
+
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+    <!-- Package Type & Quantity -->
+    <div>
+      <label class="block text-sm font-medium text-gray-700 mb-1.5">Package Type *</label>
+      <%= f.select :package_type,
+          options_for_select(
+            PackageTypePreset.all.map { |p| [p.name, p.name.downcase.gsub(' ', '_')] },
+            f.object.package_type
+          ),
+          { include_blank: "Select type" },
+          data: { action: "change->package-items#typeChanged" },
+          class: "w-full px-4 py-2.5 border border-gray-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent" %>
+    </div>
+
+    <div>
+      <label class="block text-sm font-medium text-gray-700 mb-1.5">Quantity *</label>
+      <%= f.number_field :quantity,
+          min: 1,
+          value: f.object.quantity || 1,
+          data: { action: "change->package-items#updateSummary" },
+          class: "w-full px-4 py-2.5 border border-gray-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent" %>
+    </div>
+
+    <!-- Dimensions -->
+    <div>
+      <label class="block text-sm font-medium text-gray-700 mb-1.5">Length (cm)</label>
+      <%= f.number_field :length_cm,
+          min: 0,
+          step: 1,
+          placeholder: "120",
+          class: "w-full px-4 py-2.5 border border-gray-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent" %>
+    </div>
+
+    <div>
+      <label class="block text-sm font-medium text-gray-700 mb-1.5">Width (cm)</label>
+      <%= f.number_field :width_cm,
+          min: 0,
+          step: 1,
+          placeholder: "80",
+          class: "w-full px-4 py-2.5 border border-gray-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent" %>
+    </div>
+
+    <div>
+      <label class="block text-sm font-medium text-gray-700 mb-1.5">Height (cm)</label>
+      <%= f.number_field :height_cm,
+          min: 0,
+          step: 1,
+          placeholder: "144",
+          class: "w-full px-4 py-2.5 border border-gray-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent" %>
+    </div>
+
+    <div>
+      <label class="block text-sm font-medium text-gray-700 mb-1.5">Weight (kg) *</label>
+      <%= f.number_field :weight_kg,
+          min: 0,
+          step: 0.01,
+          placeholder: "300",
+          data: { action: "change->package-items#updateSummary" },
+          class: "w-full px-4 py-2.5 border border-gray-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent" %>
+    </div>
+  </div>
+</div>
