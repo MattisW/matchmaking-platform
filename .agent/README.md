@@ -26,6 +26,7 @@ This directory contains all critical documentation for the Matchmaking Platform 
 |----------|-------------|--------------|
 | [Quote System Implementation](./SOP/quote_system_implementation.md) | Complete guide to implementing automated quote generation and pricing calculator | 2025-10-08 |
 | [Adding Database Migrations](./SOP/adding_database_migrations.md) | Step-by-step guide for creating safe, reversible database migrations in SQLite | 2025-10-08 |
+| [Implementing Multi-Mode Cargo Management](./SOP/implementing_multi_mode_cargo_management.md) | Comprehensive guide to building multi-mode interfaces with nested forms, Stimulus controllers, and theme variations | 2025-10-08 |
 
 **Coming Soon:**
 - `implementing_new_controller.md` - Controller patterns and conventions
@@ -51,6 +52,7 @@ This directory contains all critical documentation for the Matchmaking Platform 
 |----------|-------------|--------------|
 | [System Documentation Plan](./Tasks/system_documentation_plan.md) | Implementation plan for completing system documentation | 2025-10-08 |
 | [Performance Optimization](./Tasks/performance_optimization.md) | Roadmap for database, algorithm, and frontend performance improvements | 2025-10-08 |
+| [Customer Cargo Management Implementation](./Tasks/customer_cargo_management_implementation.md) | Implementation plan for customer cargo management feature (COMPLETED) | 2025-10-08 |
 
 **Coming Soon:**
 | `quote_system_prd.md` | Product requirements for quote & pricing system |
@@ -74,13 +76,16 @@ This directory contains all critical documentation for the Matchmaking Platform 
   - Fleet and equipment tracking
   - Rating system
 
-- **Transport Request Management**
+- **Transport Request Management** 📍 *[SOP](./SOP/implementing_multi_mode_cargo_management.md)*
   - Google Maps autocomplete for addresses
   - Detailed address fields (company, street, postal code, etc.)
-  - Package items with type presets
-  - Loading meters mode
-  - Vehicle booking mode
+  - **Multi-mode cargo management:**
+    - Packages mode with dynamic nested forms
+    - Loading meters mode with live summary
+    - Vehicle booking mode with price calculator
+  - Package items with type presets and auto-fill
   - Date/time pickers with 15-min increments
+  - Role-based themes (admin=blue, customer=green)
 
 - **Quote & Pricing System** 📍 *[SOP](./SOP/quote_system_implementation.md)*
   - Automated quote generation
@@ -319,6 +324,7 @@ List relevant code files
 |------|---------|--------|
 | 2025-10-08 | Created initial README and Quote System SOP | Claude Code |
 | 2025-10-08 | Completed system documentation: Project Architecture, Database Schema, Authentication & Authorization, Carrier Matching Algorithm; Added Database Migrations SOP; Added Performance Optimization task | Claude Code |
+| 2025-10-08 | Added Multi-Mode Cargo Management SOP; Updated feature status to include cargo management details; Added Customer Cargo Management task | Claude Code |
 
 ---
 
