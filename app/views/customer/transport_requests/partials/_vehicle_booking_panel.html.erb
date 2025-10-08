@@ -1,0 +1,58 @@
+<div class="space-y-4">
+  <h4 class="text-base font-semibold text-gray-900 mb-4">Vehicle Booking (Dedicated Vehicle)</h4>
+
+  <p class="text-sm text-gray-600 mb-6">
+    Select a dedicated vehicle type. The price is calculated based on distance (per km).
+  </p>
+
+  <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+    <% TransportRequest::VEHICLE_TYPES_BOOKING.each do |key, vehicle| %>
+      <label class="relative flex flex-col p-4 border-2 rounded-lg cursor-pointer hover:border-green-500 transition <%= 'border-green-600 bg-green-50' if f.object.vehicle_type == key %>">
+        <%= f.radio_button :vehicle_type,
+            key,
+            class: "sr-only" %>
+
+        <div class="flex flex-col items-center text-center">
+          <!-- Vehicle Icon -->
+          <div class="text-4xl mb-2">
+            <% case key %>
+            <% when 'sprinter' %>
+              🚐
+            <% when 'sprinter_xxl' %>
+              🚐
+            <% when 'lkw_7_5' %>
+              🚚
+            <% when 'lkw_12' %>
+              🚛
+            <% when 'lkw_40' %>
+              🚛
+            <% end %>
+          </div>
+
+          <h5 class="font-semibold text-gray-900"><%= vehicle[:name] %></h5>
+          <p class="text-xs text-gray-500 mt-1">max. <%= number_with_delimiter(vehicle[:max_weight]) %>kg</p>
+          <p class="text-sm font-medium text-green-600 mt-2">
+            ab <%= number_to_currency(vehicle[:price_per_km], unit: '€', format: '%n %u') %> pro km
+          </p>
+        </div>
+
+        <!-- Selected indicator -->
+        <% if f.object.vehicle_type == key %>
+          <div class="absolute top-2 right-2 w-5 h-5 bg-green-600 rounded-full flex items-center justify-center">
+            <svg class="w-3 h-3 text-white" fill="currentColor" viewBox="0 0 20 20">
+              <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
+            </svg>
+          </div>
+        <% end %>
+      </label>
+    <% end %>
+  </div>
+
+  <div class="mt-6 p-4 bg-green-50 border border-green-200 rounded-lg">
+    <h5 class="text-sm font-semibold text-gray-700 mb-2">Note</h5>
+    <p class="text-sm text-gray-600">
+      The final price will be calculated based on the total distance (approximately <%= @transport_request.distance_km || 0 %>km).
+      The estimated cost will be shown after you select a vehicle and submit the form.
+    </p>
+  </div>
+</div>

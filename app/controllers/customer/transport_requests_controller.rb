@@ -86,7 +86,14 @@ module Customer
         :vehicle_type, :cargo_length_cm, :cargo_width_cm, :cargo_height_cm,
         :cargo_weight_kg, :loading_meters,
         :requires_liftgate, :requires_pallet_jack, :requires_side_loading,
-        :requires_tarp, :requires_gps_tracking, :driver_language
+        :requires_tarp, :requires_gps_tracking, :driver_language,
+        # Cargo management params
+        :shipping_mode, :total_height_cm, :total_weight_kg,
+        package_items_attributes: [
+          :id, :package_type, :quantity,
+          :length_cm, :width_cm, :height_cm, :weight_kg,
+          :_destroy
+        ]
       )
     end
   end

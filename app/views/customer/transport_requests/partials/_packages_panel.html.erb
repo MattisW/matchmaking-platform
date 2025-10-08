@@ -1,0 +1,33 @@
+<div data-controller="package-items"
+     data-package-items-presets-value='<%= PackageTypePreset.all.map { |p| [p.name.downcase.gsub(" ", "_"), p.as_json_defaults] }.to_h.to_json %>'>
+
+  <h4 class="text-base font-semibold text-gray-900 mb-4">Package Details</h4>
+
+  <div data-package-items-target="container">
+    <%= f.fields_for :package_items do |package_form| %>
+      <%= render 'customer/transport_requests/partials/package_item_fields', f: package_form %>
+    <% end %>
+  </div>
+
+  <!-- Template for new package items -->
+  <template data-package-items-target="template">
+    <%= f.fields_for :package_items, PackageItem.new, child_index: 'NEW_RECORD' do |package_form| %>
+      <%= render 'customer/transport_requests/partials/package_item_fields', f: package_form %>
+    <% end %>
+  </template>
+
+  <!-- Add Button -->
+  <button type="button"
+          data-action="package-items#add"
+          class="w-full mt-4 px-4 py-2 border-2 border-dashed border-green-300 text-green-600 rounded-md hover:border-green-400 hover:bg-green-50 transition">
+    + Add Another Package
+  </button>
+
+  <!-- Summary -->
+  <div class="mt-6 p-4 bg-green-50 border border-green-200 rounded-lg">
+    <h5 class="text-sm font-semibold text-gray-700 mb-2">Summary</h5>
+    <div data-package-items-target="summary" class="text-sm text-gray-600">
+      Packstück(e): <strong>0</strong> Gesamtgewicht: <strong>0.00kg</strong>
+    </div>
+  </div>
+</div>
