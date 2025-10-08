@@ -9,9 +9,10 @@ This directory contains all critical documentation for the Matchmaking Platform 
 ## Quick Start
 
 **New to the project?** Read in this order:
-1. [Project Architecture](./System/project_architecture.md) *(coming soon)*
-2. [Database Schema](./System/database_schema.md) *(coming soon)*
-3. [Quote System SOP](./SOP/quote_system_implementation.md)
+1. [Project Architecture](./System/project_architecture.md)
+2. [Database Schema](./System/database_schema.md)
+3. [Authentication & Authorization](./System/authentication_authorization.md)
+4. [Quote System SOP](./SOP/quote_system_implementation.md)
 
 ---
 
@@ -24,9 +25,9 @@ This directory contains all critical documentation for the Matchmaking Platform 
 | Document | Description | Last Updated |
 |----------|-------------|--------------|
 | [Quote System Implementation](./SOP/quote_system_implementation.md) | Complete guide to implementing automated quote generation and pricing calculator | 2025-10-08 |
+| [Adding Database Migrations](./SOP/adding_database_migrations.md) | Step-by-step guide for creating safe, reversible database migrations in SQLite | 2025-10-08 |
 
 **Coming Soon:**
-- `adding_database_migrations.md` - How to safely add new database migrations
 - `implementing_new_controller.md` - Controller patterns and conventions
 - `adding_localization.md` - How to add new languages or translations
 - `deployment_checklist.md` - Pre-deployment verification steps
@@ -35,22 +36,26 @@ This directory contains all critical documentation for the Matchmaking Platform 
 
 **Purpose:** High-level system documentation, architecture decisions, tech stack, and integration points.
 
-| Document | Description | Status |
-|----------|-------------|--------|
-| `project_architecture.md` | Overall project structure, tech stack, and architectural decisions | Coming Soon |
-| `database_schema.md` | Complete database schema with relationships and indexes | Coming Soon |
-| `authentication_flow.md` | User authentication and authorization (Devise, roles) | Coming Soon |
-| `carrier_matching_algorithm.md` | How carrier matching works | Coming Soon |
+| Document | Description | Last Updated |
+|----------|-------------|--------------|
+| [Project Architecture](./System/project_architecture.md) | Overall project structure, tech stack, and architectural decisions | 2025-10-08 |
+| [Database Schema](./System/database_schema.md) | Complete database schema with relationships and indexes | 2025-10-08 |
+| [Authentication & Authorization](./System/authentication_authorization.md) | User authentication and authorization (Devise, roles) | 2025-10-08 |
+| [Carrier Matching Algorithm](./System/carrier_matching_algorithm.md) | Core business logic for matching carriers to transport requests | 2025-10-08 |
 
 ### 📝 Tasks & Feature Plans (Tasks)
 
 **Purpose:** Product requirements and implementation plans for features (past and future).
 
-| Document | Description | Status |
-|----------|-------------|--------|
-| `quote_system_prd.md` | Product requirements for quote & pricing system | Coming Soon |
-| `cargo_management_prd.md` | Product requirements for package/loading meter management | Coming Soon |
-| `customer_portal_prd.md` | Requirements for customer self-service portal | Coming Soon |
+| Document | Description | Last Updated |
+|----------|-------------|--------------|
+| [System Documentation Plan](./Tasks/system_documentation_plan.md) | Implementation plan for completing system documentation | 2025-10-08 |
+| [Performance Optimization](./Tasks/performance_optimization.md) | Roadmap for database, algorithm, and frontend performance improvements | 2025-10-08 |
+
+**Coming Soon:**
+| `quote_system_prd.md` | Product requirements for quote & pricing system |
+| `cargo_management_prd.md` | Product requirements for package/loading meter management |
+| `customer_portal_prd.md` | Requirements for customer self-service portal |
 
 ---
 
@@ -313,6 +318,7 @@ List relevant code files
 | Date | Changes | Author |
 |------|---------|--------|
 | 2025-10-08 | Created initial README and Quote System SOP | Claude Code |
+| 2025-10-08 | Completed system documentation: Project Architecture, Database Schema, Authentication & Authorization, Carrier Matching Algorithm; Added Database Migrations SOP; Added Performance Optimization task | Claude Code |
 
 ---
 
