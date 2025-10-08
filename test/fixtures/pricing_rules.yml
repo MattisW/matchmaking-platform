@@ -1,0 +1,41 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+transporter_rule:
+  vehicle_type: "transporter"
+  rate_per_km: 1.20
+  minimum_price: 150.00
+  weekend_surcharge_percent: 15.0
+  express_surcharge_percent: 25.0
+  active: true
+
+lkw_7_5t_rule:
+  vehicle_type: "lkw_7_5t"
+  rate_per_km: 1.50
+  minimum_price: 200.00
+  weekend_surcharge_percent: 15.0
+  express_surcharge_percent: 30.0
+  active: true
+
+lkw_12t_rule:
+  vehicle_type: "lkw_12t"
+  rate_per_km: 1.80
+  minimum_price: 250.00
+  weekend_surcharge_percent: 15.0
+  express_surcharge_percent: 30.0
+  active: true
+
+any_vehicle_rule:
+  vehicle_type: "any"
+  rate_per_km: 1.00
+  minimum_price: 100.00
+  weekend_surcharge_percent: 10.0
+  express_surcharge_percent: 20.0
+  active: true
+
+inactive_rule:
+  vehicle_type: "sprinter"
+  rate_per_km: 1.30
+  minimum_price: 175.00
+  weekend_surcharge_percent: 15.0
+  express_surcharge_percent: 25.0
+  active: false
