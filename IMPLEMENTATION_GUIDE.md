@@ -448,15 +448,29 @@ def transport_request_params
 end
 ```
 
-### Step 7: Copy Partials for Customer Interface
+### Step 7: Copy Partials for Customer Interface ✅ COMPLETE
 
-Create the same partials in `app/views/customer/transport_requests/partials/` and update colors from `blue` to `green` to match the customer theme.
+**Status:** ✅ All customer partials created with green theme
 
-**Quick Find & Replace:**
+Created the same partials in `app/views/customer/transport_requests/partials/` with colors updated from `blue` to `green` to match the customer theme.
+
+**Theme Changes Applied:**
 - `blue-600` → `green-600`
 - `blue-500` → `green-500`
 - `blue-50` → `green-50`
-- etc.
+- `blue-300` → `green-300`
+- `blue-200` → `green-200`
+
+**Files Created:**
+- `app/views/customer/transport_requests/partials/_package_item_fields.html.erb`
+- `app/views/customer/transport_requests/partials/_packages_panel.html.erb`
+- `app/views/customer/transport_requests/partials/_loading_meters_panel.html.erb`
+- `app/views/customer/transport_requests/partials/_vehicle_booking_panel.html.erb`
+- `app/views/customer/transport_requests/partials/_datetime_section.html.erb`
+
+**Files Updated:**
+- `app/views/customer/transport_requests/_form.html.erb` (cargo section rewritten with tabs)
+- `app/controllers/customer/transport_requests_controller.rb` (params updated)
 
 ## Testing Checklist
 
@@ -553,19 +567,34 @@ app/
 
 ## Complete Implementation Checklist
 
+### Admin Interface
 - [x] Database migrations
 - [x] Models
 - [x] Seed data
 - [x] Stimulus controllers
 - [x] Helper method
 - [x] DateTime partial
-- [ ] Package item fields partial
-- [ ] Packages panel partial
-- [ ] Loading meters panel partial
-- [ ] Vehicle booking panel partial
-- [ ] Update main form
-- [ ] Update controller params
-- [ ] Copy to customer interface
-- [ ] Test all modes
+- [x] Package item fields partial
+- [x] Packages panel partial
+- [x] Loading meters panel partial
+- [x] Vehicle booking panel partial
+- [x] Update main form
+- [x] Update controller params
+
+### Customer Interface
+- [x] Package item fields partial (green theme)
+- [x] Packages panel partial (green theme)
+- [x] Loading meters panel partial (green theme)
+- [x] Vehicle booking panel partial (green theme)
+- [x] DateTime section partial (green theme)
+- [x] Update customer form with cargo sections
+- [x] Update customer controller params
+
+### Testing (Manual)
+- [ ] Test all modes (packages, loading meters, vehicle booking)
 - [ ] Test form submission
 - [ ] Test edit flow
+- [ ] Test admin vs customer theme differences
+- [ ] Test package type presets auto-fill
+- [ ] Test dynamic package item add/remove
+- [ ] Test nested attributes persistence
