@@ -1,33 +1,133 @@
 # Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-one:
-  transport_request: one
-  carrier: one
-  status: MyString
-  distance_to_pickup_km: 9.99
-  distance_to_delivery_km: 9.99
-  in_radius: false
-  email_sent_at: 2025-10-05 16:58:58
-  response_date: 2025-10-05 16:58:58
-  offered_price: 9.99
-  offered_delivery_date: 2025-10-05 16:58:58
-  transport_type: MyString
-  vehicle_type: MyString
-  driver_language: MyString
-  notes: MyText
+# Carrier requests for packages_mode (Berlin to Munich)
+packages_berlin_express:
+  transport_request: packages_mode
+  carrier: berlin_express_transport
+  status: "sent"
+  distance_to_pickup_km: 15.5
+  distance_to_delivery_km: 585.2
+  in_radius: true
+  email_sent_at: 2025-10-08 10:00:00
+  response_date: null
+  offered_price: null
+  offered_delivery_date: null
+  transport_type: null
+  vehicle_type: null
+  driver_language: null
+  notes: "Email invitation sent, awaiting response."
 
-two:
-  transport_request: two
-  carrier: two
-  status: MyString
-  distance_to_pickup_km: 9.99
-  distance_to_delivery_km: 9.99
+packages_munich_freight:
+  transport_request: packages_mode
+  carrier: munich_freight_services
+  status: "offered"
+  distance_to_pickup_km: 585.2
+  distance_to_delivery_km: 12.3
+  in_radius: true
+  email_sent_at: 2025-10-08 10:00:00
+  response_date: 2025-10-08 14:30:00
+  offered_price: 850.00
+  offered_delivery_date: 2025-10-11 16:00:00
+  transport_type: "standard"
+  vehicle_type: "lkw"
+  driver_language: "de"
+  notes: "Temperature-controlled vehicle available if needed."
+
+# Carrier requests for loading_meters_mode (Hamburg to Frankfurt)
+loading_meters_hamburg:
+  transport_request: loading_meters_mode
+  carrier: hamburg_cargo_solutions
+  status: "offered"
+  distance_to_pickup_km: 8.7
+  distance_to_delivery_km: 393.1
+  in_radius: true
+  email_sent_at: 2025-10-08 11:00:00
+  response_date: 2025-10-08 13:15:00
+  offered_price: 1250.00
+  offered_delivery_date: 2025-10-10 17:00:00
+  transport_type: "standard"
+  vehicle_type: "lkw"
+  driver_language: "de"
+  notes: "Specialized in loading meter transport. GPS tracking included."
+
+loading_meters_german_logistics:
+  transport_request: loading_meters_mode
+  carrier: german_logistics_gmbh
+  status: "offered"
+  distance_to_pickup_km: 393.1
+  distance_to_delivery_km: 5.2
+  in_radius: true
+  email_sent_at: 2025-10-08 11:00:00
+  response_date: 2025-10-08 15:45:00
+  offered_price: 1180.00
+  offered_delivery_date: 2025-10-10 16:00:00
+  transport_type: "express"
+  vehicle_type: "lkw"
+  driver_language: "de"
+  notes: "Express delivery available. Can deliver one day earlier if needed."
+
+# Carrier requests for vehicle_booking_mode (Cologne to Stuttgart)
+vehicle_booking_german_logistics:
+  transport_request: vehicle_booking_mode
+  carrier: german_logistics_gmbh
+  status: "sent"
+  distance_to_pickup_km: 180.5
+  distance_to_delivery_km: 362.3
+  in_radius: true
+  email_sent_at: 2025-10-08 12:00:00
+  response_date: null
+  offered_price: null
+  offered_delivery_date: null
+  transport_type: null
+  vehicle_type: null
+  driver_language: null
+  notes: "Awaiting carrier response."
+
+vehicle_booking_munich_freight:
+  transport_request: vehicle_booking_mode
+  carrier: munich_freight_services
+  status: "rejected"
+  distance_to_pickup_km: 450.0
+  distance_to_delivery_km: 220.0
   in_radius: false
-  email_sent_at: 2025-10-05 16:58:58
-  response_date: 2025-10-05 16:58:58
-  offered_price: 9.99
-  offered_delivery_date: 2025-10-05 16:58:58
-  transport_type: MyString
-  vehicle_type: MyString
-  driver_language: MyString
-  notes: MyText
+  email_sent_at: 2025-10-08 12:00:00
+  response_date: 2025-10-08 16:00:00
+  offered_price: null
+  offered_delivery_date: null
+  transport_type: null
+  vehicle_type: null
+  driver_language: null
+  notes: "Carrier declined - outside service radius."
+
+# Carrier requests for completed_request (Leipzig to Dresden)
+completed_berlin_express:
+  transport_request: completed_request
+  carrier: berlin_express_transport
+  status: "won"
+  distance_to_pickup_km: 160.3
+  distance_to_delivery_km: 119.2
+  in_radius: true
+  email_sent_at: 2025-09-28 09:00:00
+  response_date: 2025-09-28 11:30:00
+  offered_price: 420.00
+  offered_delivery_date: 2025-10-02 12:00:00
+  transport_type: "express"
+  vehicle_type: "transporter"
+  driver_language: "de"
+  notes: "Job completed successfully. Customer very satisfied."
+
+completed_german_logistics:
+  transport_request: completed_request
+  carrier: german_logistics_gmbh
+  status: "rejected"
+  distance_to_pickup_km: 400.0
+  distance_to_delivery_km: 500.0
+  in_radius: true
+  email_sent_at: 2025-09-28 09:00:00
+  response_date: 2025-09-28 10:15:00
+  offered_price: 520.00
+  offered_delivery_date: 2025-10-02 14:00:00
+  transport_type: "standard"
+  vehicle_type: "transporter"
+  driver_language: "de"
+  notes: "Offer rejected - customer chose lower price."

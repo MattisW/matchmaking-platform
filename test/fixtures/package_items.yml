@@ -1,19 +1,37 @@
 # Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-one:
-  transport_request: one
-  package_type: MyString
-  quantity: 1
-  length_cm: 1
-  width_cm: 1
-  height_cm: 1
-  weight_kg: 9.99
+euro_pallet_one:
+  transport_request: packages_mode
+  package_type: euro_pallet
+  quantity: 2
+  length_cm: 120
+  width_cm: 80
+  height_cm: 144
+  weight_kg: 300.00
 
-two:
-  transport_request: two
-  package_type: MyString
+industrial_pallet_one:
+  transport_request: packages_mode
+  package_type: industrial_pallet
   quantity: 1
-  length_cm: 1
-  width_cm: 1
-  height_cm: 1
-  weight_kg: 9.99
+  length_cm: 120
+  width_cm: 100
+  height_cm: 144
+  weight_kg: 400.00
+
+half_pallet_one:
+  transport_request: completed_request
+  package_type: half_pallet
+  quantity: 4
+  length_cm: 60
+  width_cm: 80
+  height_cm: 144
+  weight_kg: 150.00
+
+custom_box_one:
+  transport_request: completed_request
+  package_type: custom_box
+  quantity: 1
+  length_cm: 50
+  width_cm: 50
+  height_cm: 50
+  weight_kg: 25.00

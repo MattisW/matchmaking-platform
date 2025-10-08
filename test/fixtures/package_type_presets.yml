@@ -1,17 +1,41 @@
 # Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-one:
-  name: MyString
-  category: MyString
-  default_length_cm: 1
-  default_width_cm: 1
-  default_height_cm: 1
-  default_weight_kg: 9.99
+euro_pallet:
+  name: "Euro Pallet"
+  category: "pallet"
+  default_length_cm: 120
+  default_width_cm: 80
+  default_height_cm: 144
+  default_weight_kg: 300.00
 
-two:
-  name: MyString
-  category: MyString
-  default_length_cm: 1
-  default_width_cm: 1
-  default_height_cm: 1
-  default_weight_kg: 9.99
+industrial_pallet:
+  name: "Industrial Pallet"
+  category: "pallet"
+  default_length_cm: 120
+  default_width_cm: 100
+  default_height_cm: 144
+  default_weight_kg: 400.00
+
+half_pallet:
+  name: "Half Pallet"
+  category: "pallet"
+  default_length_cm: 60
+  default_width_cm: 80
+  default_height_cm: 144
+  default_weight_kg: 150.00
+
+quarter_pallet:
+  name: "Quarter Pallet"
+  category: "pallet"
+  default_length_cm: 60
+  default_width_cm: 40
+  default_height_cm: 144
+  default_weight_kg: 75.00
+
+custom_box:
+  name: "Custom Box"
+  category: "custom"
+  default_length_cm: null
+  default_width_cm: null
+  default_height_cm: null
+  default_weight_kg: null

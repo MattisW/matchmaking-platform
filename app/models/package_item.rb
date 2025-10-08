@@ -1,24 +1,20 @@
 class PackageItem < ApplicationRecord
-  belongs_to :transport_request
+  belongs_to :transport_request, inverse_of: :package_items
 
-  PACKAGE_TYPES = {
-    'europalette' => 'Europalette',
-    'halbpalette' => 'Halbpalette',
-    'viertelpalette' => 'Viertelpalette',
-    'cartonage' => 'Cartonage',
-    'custom' => 'Custom Package'
-  }.freeze
+  # Validations
+  validates :package_type, presence: true
+  validates :quantity, presence: true, numericality: { only_integer: true, greater_than: 0 }
+  validates :weight_kg, presence: true, numericality: { greater_than: 0 }
+  validates :length_cm, :width_cm, :height_cm,
+            numericality: { only_integer: true, greater_than: 0 }, allow_nil: true
 
-  validates :package_type, presence: true, inclusion: { in: PACKAGE_TYPES.keys }
-  validates :quantity, presence: true, numericality: { greater_than: 0 }
-  validates :length_cm, :width_cm, :height_cm, :weight_kg,
-            numericality: { greater_than: 0 }, allow_nil: true
-
+  # Calculate total weight for this package item
   def total_weight
     (weight_kg || 0) * quantity
   end
 
+  # Get the display label for the package type
   def package_type_label
-    PACKAGE_TYPES[package_type] || package_type
+    PackageTypePreset.find_by(name: package_type.titleize)&.name || package_type.humanize
   end
 end

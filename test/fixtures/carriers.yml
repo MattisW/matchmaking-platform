@@ -1,51 +1,136 @@
 # Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-one:
-  company_name: MyString
-  contact_email: MyString
-  contact_phone: MyString
-  preferred_contact_method: MyString
-  language: MyString
-  country: MyString
-  address: MyText
-  latitude: 9.99
-  longitude: 9.99
-  pickup_radius_km: 1
+german_logistics_gmbh:
+  company_name: "German Logistics GmbH"
+  contact_email: "dispatch@german-logistics.de"
+  contact_phone: "+49 69 12345678"
+  preferred_contact_method: "email"
+  language: "de"
+  country: "DE"
+  address: "Mainzer Landstraße 123, 60329 Frankfurt am Main, Germany"
+  latitude: 50.1109
+  longitude: 8.6821
+  pickup_radius_km: 200
   ignore_radius: false
-  has_transporter: false
-  has_lkw: false
-  lkw_length_cm: 1
-  lkw_width_cm: 1
-  lkw_height_cm: 1
-  has_liftgate: false
-  has_pallet_jack: false
-  has_gps_tracking: false
+  has_transporter: true
+  has_lkw: true
+  lkw_length_cm: 750
+  lkw_width_cm: 245
+  lkw_height_cm: 280
+  has_liftgate: true
+  has_pallet_jack: true
+  has_gps_tracking: true
   blacklisted: false
-  rating_communication: 9.99
-  rating_punctuality: 9.99
-  notes: MyText
+  rating_communication: 4.5
+  rating_punctuality: 4.8
+  notes: "Reliable carrier with modern fleet. Excellent for palletized cargo."
+  pickup_countries: ["DE", "AT", "CH"]
+  delivery_countries: ["DE", "AT", "CH", "NL", "BE"]
 
-two:
-  company_name: MyString
-  contact_email: MyString
-  contact_phone: MyString
-  preferred_contact_method: MyString
-  language: MyString
-  country: MyString
-  address: MyText
-  latitude: 9.99
-  longitude: 9.99
-  pickup_radius_km: 1
+berlin_express_transport:
+  company_name: "Berlin Express Transport"
+  contact_email: "office@berlin-express.de"
+  contact_phone: "+49 30 98765432"
+  preferred_contact_method: "phone"
+  language: "de"
+  country: "DE"
+  address: "Warschauer Straße 45, 10243 Berlin, Germany"
+  latitude: 52.5200
+  longitude: 13.4050
+  pickup_radius_km: 150
   ignore_radius: false
-  has_transporter: false
+  has_transporter: true
   has_lkw: false
-  lkw_length_cm: 1
-  lkw_width_cm: 1
-  lkw_height_cm: 1
+  lkw_length_cm: null
+  lkw_width_cm: null
+  lkw_height_cm: null
+  has_liftgate: true
+  has_pallet_jack: false
+  has_gps_tracking: true
+  blacklisted: false
+  rating_communication: 4.2
+  rating_punctuality: 4.0
+  notes: "Fast delivery service specializing in express shipments."
+  pickup_countries: ["DE"]
+  delivery_countries: ["DE", "PL", "CZ"]
+
+munich_freight_services:
+  company_name: "Munich Freight Services"
+  contact_email: "kontakt@munich-freight.de"
+  contact_phone: "+49 89 55566677"
+  preferred_contact_method: "email"
+  language: "de"
+  country: "DE"
+  address: "Leopoldstraße 234, 80807 München, Germany"
+  latitude: 48.1351
+  longitude: 11.5820
+  pickup_radius_km: 300
+  ignore_radius: false
+  has_transporter: true
+  has_lkw: true
+  lkw_length_cm: 850
+  lkw_width_cm: 250
+  lkw_height_cm: 300
+  has_liftgate: true
+  has_pallet_jack: true
+  has_gps_tracking: true
+  blacklisted: false
+  rating_communication: 4.7
+  rating_punctuality: 4.9
+  notes: "Premium carrier with temperature-controlled vehicles available."
+  pickup_countries: ["DE", "AT", "IT", "CH"]
+  delivery_countries: ["DE", "AT", "IT", "CH", "FR"]
+
+hamburg_cargo_solutions:
+  company_name: "Hamburg Cargo Solutions"
+  contact_email: "info@hamburg-cargo.de"
+  contact_phone: "+49 40 33445566"
+  preferred_contact_method: "email"
+  language: "de"
+  country: "DE"
+  address: "Reeperbahn 88, 20359 Hamburg, Germany"
+  latitude: 53.5511
+  longitude: 9.9937
+  pickup_radius_km: 250
+  ignore_radius: false
+  has_transporter: true
+  has_lkw: true
+  lkw_length_cm: 800
+  lkw_width_cm: 245
+  lkw_height_cm: 290
+  has_liftgate: true
+  has_pallet_jack: true
+  has_gps_tracking: true
+  blacklisted: false
+  rating_communication: 4.6
+  rating_punctuality: 4.7
+  notes: "Specializes in oversized cargo and loading meter shipments."
+  pickup_countries: ["DE", "DK", "NL"]
+  delivery_countries: ["DE", "DK", "NL", "BE", "SE"]
+
+blacklisted_carrier:
+  company_name: "Unreliable Transport Co"
+  contact_email: "test@unreliable.de"
+  contact_phone: "+49 123 4567890"
+  preferred_contact_method: "email"
+  language: "de"
+  country: "DE"
+  address: "Teststraße 1, 12345 Berlin, Germany"
+  latitude: 52.5200
+  longitude: 13.4050
+  pickup_radius_km: 100
+  ignore_radius: false
+  has_transporter: true
+  has_lkw: false
+  lkw_length_cm: null
+  lkw_width_cm: null
+  lkw_height_cm: null
   has_liftgate: false
   has_pallet_jack: false
   has_gps_tracking: false
-  blacklisted: false
-  rating_communication: 9.99
-  rating_punctuality: 9.99
-  notes: MyText
+  blacklisted: true
+  rating_communication: 1.5
+  rating_punctuality: 1.0
+  notes: "Blacklisted due to repeated delivery failures and poor communication."
+  pickup_countries: ["DE"]
+  delivery_countries: ["DE"]
