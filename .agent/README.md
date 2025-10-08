@@ -27,6 +27,7 @@ This directory contains all critical documentation for the Matchmaking Platform 
 | [Quote System Implementation](./SOP/quote_system_implementation.md) | Complete guide to implementing automated quote generation and pricing calculator | 2025-10-08 |
 | [Adding Database Migrations](./SOP/adding_database_migrations.md) | Step-by-step guide for creating safe, reversible database migrations in SQLite | 2025-10-08 |
 | [Implementing Multi-Mode Cargo Management](./SOP/implementing_multi_mode_cargo_management.md) | Comprehensive guide to building multi-mode interfaces with nested forms, Stimulus controllers, and theme variations | 2025-10-08 |
+| [Implementing Comprehensive Unit Tests](./SOP/implementing_comprehensive_unit_tests.md) | Complete guide to creating fixtures, writing model tests with Minitest, debugging, and best practices | 2025-10-08 |
 
 **Coming Soon:**
 - `implementing_new_controller.md` - Controller patterns and conventions
@@ -53,6 +54,7 @@ This directory contains all critical documentation for the Matchmaking Platform 
 | [System Documentation Plan](./Tasks/system_documentation_plan.md) | Implementation plan for completing system documentation | 2025-10-08 |
 | [Performance Optimization](./Tasks/performance_optimization.md) | Roadmap for database, algorithm, and frontend performance improvements | 2025-10-08 |
 | [Customer Cargo Management Implementation](./Tasks/customer_cargo_management_implementation.md) | Implementation plan for customer cargo management feature (COMPLETED) | 2025-10-08 |
+| [Comprehensive Testing Implementation](./Tasks/comprehensive_testing_implementation.md) | 3-tier testing strategy: unit tests (Minitest), integration tests, E2E tests (MCP Chrome DevTools) - **IN PROGRESS** | 2025-10-08 |
 
 **Coming Soon:**
 | `quote_system_prd.md` | Product requirements for quote & pricing system |
@@ -108,10 +110,16 @@ This directory contains all critical documentation for the Matchmaking Platform 
   - User-specific locale preferences
   - Language switcher in UI
 
+- **Unit Testing** 📍 *[SOP](./SOP/implementing_comprehensive_unit_tests.md)* | *[Task](./Tasks/comprehensive_testing_implementation.md)*
+  - 71 model tests (PackageItem, TransportRequest, PackageTypePreset)
+  - Realistic fixtures with foreign key integrity
+  - Comprehensive validation coverage (presence, numericality, conditional, custom)
+  - Association tests (belongs_to, has_many, inverse_of, nested attributes)
+  - Scope and business logic tests
+
 ### 🚧 In Progress
 
-- Documentation completion
-- Automated testing suite
+- Integration and E2E testing (controller tests, MCP Chrome DevTools validation)
 
 ### 📋 Planned Features
 
@@ -325,6 +333,7 @@ List relevant code files
 | 2025-10-08 | Created initial README and Quote System SOP | Claude Code |
 | 2025-10-08 | Completed system documentation: Project Architecture, Database Schema, Authentication & Authorization, Carrier Matching Algorithm; Added Database Migrations SOP; Added Performance Optimization task | Claude Code |
 | 2025-10-08 | Added Multi-Mode Cargo Management SOP; Updated feature status to include cargo management details; Added Customer Cargo Management task | Claude Code |
+| 2025-10-08 | Added Comprehensive Unit Tests SOP; Added Comprehensive Testing Implementation task; Updated feature status with unit testing details (71 tests passing) | Claude Code |
 
 ---
 
