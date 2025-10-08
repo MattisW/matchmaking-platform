@@ -28,9 +28,9 @@ This directory contains all critical documentation for the Matchmaking Platform 
 | [Adding Database Migrations](./SOP/adding_database_migrations.md) | Step-by-step guide for creating safe, reversible database migrations in SQLite | 2025-10-08 |
 | [Implementing Multi-Mode Cargo Management](./SOP/implementing_multi_mode_cargo_management.md) | Comprehensive guide to building multi-mode interfaces with nested forms, Stimulus controllers, and theme variations | 2025-10-08 |
 | [Implementing Comprehensive Unit Tests](./SOP/implementing_comprehensive_unit_tests.md) | Complete guide to creating fixtures, writing model tests with Minitest, debugging, and best practices | 2025-10-08 |
+| [Implementing Controller Tests](./SOP/implementing_controller_tests.md) | Complete guide to implementing integration tests for controllers with authentication, authorization, CRUD, nested attributes, and edge cases | 2025-10-08 |
 
 **Coming Soon:**
-- `implementing_new_controller.md` - Controller patterns and conventions
 - `adding_localization.md` - How to add new languages or translations
 - `deployment_checklist.md` - Pre-deployment verification steps
 
@@ -117,9 +117,17 @@ This directory contains all critical documentation for the Matchmaking Platform 
   - Association tests (belongs_to, has_many, inverse_of, nested attributes)
   - Scope and business logic tests
 
+- **Integration Testing** 📍 *[SOP](./SOP/implementing_controller_tests.md)* | *[Task](./Tasks/comprehensive_testing_implementation.md)*
+  - 39 Admin TransportRequests controller tests
+  - Authentication & authorization tests (Devise integration)
+  - Multi-mode CRUD tests (packages, loading_meters, vehicle_booking)
+  - Nested attributes tests (create, update, destroy)
+  - Strong parameters and geocoding tests
+  - Background job enqueueing tests
+
 ### 🚧 In Progress
 
-- Integration and E2E testing (controller tests, MCP Chrome DevTools validation)
+- Customer controller tests and E2E testing (MCP Chrome DevTools validation)
 
 ### 📋 Planned Features
 
@@ -334,6 +342,7 @@ List relevant code files
 | 2025-10-08 | Completed system documentation: Project Architecture, Database Schema, Authentication & Authorization, Carrier Matching Algorithm; Added Database Migrations SOP; Added Performance Optimization task | Claude Code |
 | 2025-10-08 | Added Multi-Mode Cargo Management SOP; Updated feature status to include cargo management details; Added Customer Cargo Management task | Claude Code |
 | 2025-10-08 | Added Comprehensive Unit Tests SOP; Added Comprehensive Testing Implementation task; Updated feature status with unit testing details (71 tests passing) | Claude Code |
+| 2025-10-08 | Added Controller Tests SOP; Completed 39 Admin TransportRequests controller tests; Fixed duplicate nested attributes bug in controller; Updated feature status with integration testing details (110 total tests passing) | Claude Code |
 
 ---
 

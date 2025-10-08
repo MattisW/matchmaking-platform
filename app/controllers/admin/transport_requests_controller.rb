@@ -39,9 +39,9 @@ class Admin::TransportRequestsController < ApplicationController
 
   def update
     # Re-geocode if addresses changed
-    if transport_request_params[:start_address] != @transport_request.start_address ||
-       transport_request_params[:destination_address] != @transport_request.destination_address
-      @transport_request.assign_attributes(transport_request_params)
+    if transport_request_params[:start_address].present? && transport_request_params[:start_address] != @transport_request.start_address ||
+       transport_request_params[:destination_address].present? && transport_request_params[:destination_address] != @transport_request.destination_address
+      @transport_request.assign_attributes(transport_request_params.except(:package_items_attributes))
       geocode_addresses(@transport_request)
     end
 
