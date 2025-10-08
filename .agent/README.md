@@ -119,15 +119,17 @@ This directory contains all critical documentation for the Matchmaking Platform 
 
 - **Integration Testing** 📍 *[SOP](./SOP/implementing_controller_tests.md)* | *[Task](./Tasks/comprehensive_testing_implementation.md)*
   - 39 Admin TransportRequests controller tests
+  - 28 Customer TransportRequests controller tests
   - Authentication & authorization tests (Devise integration)
   - Multi-mode CRUD tests (packages, loading_meters, vehicle_booking)
   - Nested attributes tests (create, update, destroy)
   - Strong parameters and geocoding tests
-  - Background job enqueueing tests
+  - Background job enqueueing and quote generation tests
+  - **Total: 138 tests passing (71 model + 67 controller)**
 
 ### 🚧 In Progress
 
-- Customer controller tests and E2E testing (MCP Chrome DevTools validation)
+- E2E testing with MCP Chrome DevTools validation
 
 ### 📋 Planned Features
 
