@@ -5,7 +5,7 @@ module Matching
     # Calculate distance between two points using Haversine formula
     # Returns distance in kilometers
     def self.haversine(lat1, lon1, lat2, lon2)
-      return nil if [lat1, lon1, lat2, lon2].any?(&:nil?)
+      return nil if [ lat1, lon1, lat2, lon2 ].any?(&:nil?)
 
       # Convert to radians
       lat1_rad = to_radians(lat1)

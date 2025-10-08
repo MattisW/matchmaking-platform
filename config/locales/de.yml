@@ -1,0 +1,321 @@
+de:
+  # Navigation
+  navigation:
+    dashboard: "Dashboard"
+    carriers: "Frachtführer"
+    transport_requests: "Transportanfragen"
+    my_requests: "Meine Anfragen"
+    logout: "Abmelden"
+
+  # Common actions
+  actions:
+    new: "Neu"
+    edit: "Bearbeiten"
+    delete: "Löschen"
+    show: "Anzeigen"
+    back: "Zurück"
+    save: "Speichern"
+    cancel: "Abbrechen"
+    create: "Erstellen"
+    update: "Aktualisieren"
+    submit: "Absenden"
+    search: "Suchen"
+    filter: "Filtern"
+    view: "Ansehen"
+
+  # Flash messages
+  flash:
+    created: "%{model} wurde erfolgreich erstellt."
+    updated: "%{model} wurde erfolgreich aktualisiert."
+    destroyed: "%{model} wurde erfolgreich gelöscht."
+    error: "Es ist ein Fehler aufgetreten."
+
+  # Locale switcher
+  locale:
+    switched: "Sprache wurde gewechselt."
+    german: "Deutsch"
+    english: "English"
+
+  # Carriers
+  carriers:
+    index:
+      title: "Frachtführer"
+      new_carrier: "Neuer Frachtführer"
+      company: "Firma"
+      email: "E-Mail"
+      country: "Land"
+      fleet: "Fuhrpark"
+      actions: "Aktionen"
+    show:
+      overview: "Übersicht"
+      transport_history: "Transportverlauf"
+      coverage_area: "Abdeckungsbereich"
+      equipment_fleet: "Ausrüstung & Flotte"
+      contact_information: "Kontaktinformationen"
+      location: "Standort"
+      fleet_overview: "Flottenübersicht"
+      internal_notes: "Interne Notizen"
+      stats:
+        total_jobs: "Gesamt Aufträge"
+        won_jobs: "Gewonnene Aufträge"
+        success_rate: "Erfolgsquote"
+        average_rating: "Durchschnittliche Bewertung"
+      transport_history_tab:
+        title: "Transportverlauf"
+        status: "Status"
+        route: "Route"
+        date: "Datum"
+        offer: "Angebot"
+        no_history: "Noch keine Transportanfragen."
+      coverage_tab:
+        service_radius: "Serviceradius"
+        pickup_countries: "Abholländer"
+        delivery_countries: "Lieferländer"
+        radius_info: "Dieser Frachtführer kann Aufträge innerhalb eines Radius von %{radius} km von seinem Standort abholen."
+      equipment_tab:
+        vehicle_fleet: "Fahrzeugflotte"
+        available_equipment: "Verfügbare Ausrüstung"
+        performance_ratings: "Leistungsbewertungen"
+        transporter: "Transporter"
+        lkw: "LKW"
+        light_delivery_vehicle: "Leichtes Lieferfahrzeug"
+        heavy_duty_truck: "Schwerlastwagen"
+        cargo_dimensions: "Laderaummaße"
+        length: "Länge"
+        width: "Breite"
+        height: "Höhe"
+        liftgate: "Hebebühne"
+        pallet_jack: "Hubwagen"
+        gps_tracking: "GPS-Tracking"
+        hydraulic_loading_platform: "Hydraulische Ladeplattform"
+        manual_pallet_handler: "Manueller Palettenhandler"
+        real_time_location: "Echtzeit-Standort"
+        communication: "Kommunikation"
+        punctuality: "Pünktlichkeit"
+        responsiveness_clarity: "Reaktionsschnelligkeit & Klarheit"
+        on_time_delivery: "Pünktliche Lieferung"
+        overall_average_rating: "Gesamtdurchschnittsbewertung"
+        available: "Verfügbar"
+        not_available: "Nicht verfügbar"
+        yes: "Ja"
+        no: "Nein"
+    form:
+      company_name: "Firmenname"
+      contact_email: "Kontakt-E-Mail"
+      contact_phone: "Kontakt-Telefon"
+      preferred_contact_method: "Bevorzugte Kontaktmethode"
+      language: "Sprache"
+      address: "Adresse"
+      country: "Land"
+      pickup_radius_km: "Abholradius (km)"
+      ignore_radius: "Radius ignorieren"
+      pickup_countries: "Abholländer"
+      delivery_countries: "Lieferländer"
+      has_transporter: "Hat Transporter"
+      has_lkw: "Hat LKW"
+      lkw_dimensions: "LKW-Abmessungen"
+      equipment: "Ausrüstung"
+      has_liftgate: "Hat Hebebühne"
+      has_pallet_jack: "Hat Hubwagen"
+      has_gps_tracking: "Hat GPS-Tracking"
+      rating_communication: "Bewertung Kommunikation"
+      rating_punctuality: "Bewertung Pünktlichkeit"
+      blacklisted: "Auf der schwarzen Liste"
+      notes: "Notizen"
+
+  # Transport Requests
+  transport_requests:
+    index:
+      title: "Transportanfragen"
+      new_request: "Neue Anfrage"
+      status: "Status"
+      route: "Route"
+      pickup_date: "Abholdatum"
+      delivery_date: "Lieferdatum"
+      actions: "Aktionen"
+    show:
+      title: "Transportanfrage Details"
+      route_information: "Routeninformationen"
+      cargo_details: "Frachtdetails"
+      requirements: "Anforderungen"
+      matched_carriers: "Passende Frachtführer"
+      offers_received: "Erhaltene Angebote"
+      run_matching: "Matching ausführen"
+    created_with_quote: "Anfrage erstellt. Ihr Angebot wurde generiert."
+    created_no_quote: "Anfrage erstellt, aber Angebot konnte nicht generiert werden. Bitte kontaktieren Sie den Support."
+    form:
+      start_address: "Startadresse"
+      destination_address: "Zieladresse"
+      pickup_date_from: "Abholdatum von"
+      pickup_date_to: "Abholdatum bis"
+      pickup_time_from: "Abholzeit von"
+      pickup_time_to: "Abholzeit bis"
+      delivery_date_from: "Lieferdatum von"
+      delivery_date_to: "Lieferdatum bis"
+      delivery_time_from: "Lieferzeit von"
+      delivery_time_to: "Lieferzeit bis"
+      vehicle_type: "Fahrzeugtyp"
+      shipping_mode: "Versandart"
+      cargo_dimensions: "Frachtabmessungen"
+      cargo_length_cm: "Länge (cm)"
+      cargo_width_cm: "Breite (cm)"
+      cargo_height_cm: "Höhe (cm)"
+      cargo_weight_kg: "Gewicht (kg)"
+      requirements: "Anforderungen"
+      requires_liftgate: "Benötigt Hebebühne"
+      requires_pallet_jack: "Benötigt Hubwagen"
+      requires_side_loading: "Benötigt Seitenbeladung"
+      requires_tarp: "Benötigt Plane"
+      requires_gps_tracking: "Benötigt GPS-Tracking"
+      driver_language: "Fahrersprache"
+    shipping_modes:
+      packages: "Pakete"
+      loading_meters: "Lademeter"
+      vehicle_booking: "Fahrzeugbuchung"
+    vehicle_types:
+      transporter: "Transporter"
+      lkw: "LKW"
+      either: "Beides"
+
+  # Carrier Requests (Offers)
+  carrier_requests:
+    index:
+      title: "Angebote"
+      carrier: "Frachtführer"
+      status: "Status"
+      price: "Preis"
+      delivery_date: "Lieferdatum"
+      actions: "Aktionen"
+    show:
+      title: "Angebotsdetails"
+      accept: "Annehmen"
+      reject: "Ablehnen"
+    statuses:
+      new: "Neu"
+      sent: "Gesendet"
+      offered: "Angeboten"
+      won: "Gewonnen"
+      rejected: "Abgelehnt"
+
+  # Customer Dashboard
+  customer:
+    dashboard:
+      title: "Dashboard"
+      recent_requests: "Aktuelle Anfragen"
+      active_requests: "Aktive Anfragen"
+      pending_offers: "Ausstehende Angebote"
+      no_requests: "Keine Transportanfragen vorhanden."
+      create_first_request: "Erstellen Sie Ihre erste Transportanfrage."
+
+  # Mailer
+  carrier_mailer:
+    invitation:
+      subject: "Neue Transportanfrage"
+      greeting: "Guten Tag,"
+      intro: "Es gibt eine neue Transportanfrage, die zu Ihrem Profil passt:"
+      route: "Route"
+      pickup_date: "Abholdatum"
+      delivery_date: "Lieferdatum"
+      cargo: "Fracht"
+      submit_offer: "Angebot abgeben"
+      thank_you: "Vielen Dank für Ihre Zusammenarbeit!"
+    offer_accepted:
+      subject: "Ihr Angebot wurde angenommen"
+      greeting: "Guten Tag,"
+      congratulations: "Herzlichen Glückwunsch! Ihr Angebot wurde angenommen."
+      transport_details: "Transportdetails"
+      next_steps: "Nächste Schritte"
+    offer_rejected:
+      subject: "Transportanfrage wurde vergeben"
+      greeting: "Guten Tag,"
+      info: "Die Transportanfrage wurde an einen anderen Frachtführer vergeben."
+      thank_you: "Vielen Dank für Ihr Angebot. Wir hoffen auf zukünftige Zusammenarbeit."
+
+  # Status values
+  statuses:
+    new: "Neu"
+    matching: "Matching läuft"
+    matched: "Zugeordnet"
+    in_transit: "In Transport"
+    delivered: "Zugestellt"
+    cancelled: "Storniert"
+
+  # Common
+  common:
+    yes: "Ja"
+    no: "Nein"
+    optional: "Optional"
+    required: "Erforderlich"
+    loading: "Laden..."
+    error: "Fehler"
+    success: "Erfolg"
+    warning: "Warnung"
+    info: "Info"
+    confirm: "Sind Sie sicher?"
+    empty_state: "Keine Daten verfügbar"
+
+  # Pricing Rules
+  pricing_rules:
+    title: "Preisregeln"
+    new: "Neue Preisregel"
+    edit: "Preisregel bearbeiten"
+    created: "Preisregel wurde erfolgreich erstellt."
+    updated: "Preisregel wurde erfolgreich aktualisiert."
+    destroyed: "Preisregel wurde erfolgreich gelöscht."
+    confirm_delete: "Möchten Sie diese Preisregel wirklich löschen?"
+    no_rules: "Keine Preisregeln vorhanden."
+    new_description: "Erstellen Sie eine neue Preisregel für einen Fahrzeugtyp."
+    vehicle_type: "Fahrzeugtyp"
+    rate_per_km: "Preis pro km"
+    minimum_price: "Mindestpreis"
+    weekend_surcharge: "Wochenend-Aufschlag"
+    express_surcharge: "Express-Aufschlag"
+    status: "Status"
+    active: "Aktiv"
+    inactive: "Inaktiv"
+    active_label: "Preisregel ist aktiv"
+    select_vehicle_type: "Fahrzeugtyp wählen"
+    weekend_help: "Zusätzlicher Prozentsatz für Abholungen am Wochenende"
+    express_help: "Zusätzlicher Prozentsatz für Express-Lieferungen (innerhalb von 24 Stunden)"
+    vehicle_types:
+      transporter: "Transporter"
+      lkw_7_5t: "LKW 7,5t"
+      lkw_12t: "LKW 12t"
+      lkw_18t: "LKW 18t"
+      lkw_24t: "LKW 24t"
+      sprinter: "Sprinter"
+      any: "Beliebig"
+
+  # Quotes
+  quotes:
+    title: "Angebot"
+    status:
+      pending: "Ausstehend"
+      accepted: "Angenommen"
+      declined: "Abgelehnt"
+      expired: "Abgelaufen"
+    line_items:
+      base_transport: "Basis-Transportkosten"
+      weekend_surcharge: "Wochenend-Aufschlag"
+      express_surcharge: "Express-Aufschlag"
+      surcharge: "Aufschlag"
+      total: "Gesamt"
+    actions:
+      accept: "Angebot annehmen"
+      decline: "Angebot ablehnen"
+      review: "Angebot prüfen"
+    messages:
+      review_quote: "Bitte prüfen Sie Ihr Angebot und akzeptieren Sie es, um fortzufahren."
+      accept_to_continue: "Akzeptieren Sie das Angebot, um die Frachtführer-Suche zu starten."
+      quote_accepted: "Angebot akzeptiert. Suche nach Frachtführern..."
+      quote_declined: "Angebot abgelehnt."
+      no_quote: "Kein Angebot verfügbar."
+    accepted: "Angebot wurde angenommen. Frachtführer werden jetzt gesucht."
+    declined: "Angebot wurde abgelehnt."
+    accept_failed: "Angebot konnte nicht angenommen werden."
+    decline_failed: "Angebot konnte nicht abgelehnt werden."
+    not_found: "Kein Angebot gefunden."
+    breakdown: "Aufschlüsselung"
+    description: "Beschreibung"
+    calculation: "Berechnung"
+    amount: "Betrag"

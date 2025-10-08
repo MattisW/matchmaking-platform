@@ -1,7 +1,8 @@
 class Admin::CarrierRequestsController < ApplicationController
-  layout 'admin'
+  layout "admin"
   before_action :authenticate_user!
-  before_action :set_carrier_request, only: [:show, :accept, :reject]
+  before_action :ensure_admin!
+  before_action :set_carrier_request, only: [ :show, :accept, :reject ]
 
   def index
     @carrier_requests = CarrierRequest.includes(:carrier, :transport_request)
@@ -15,17 +16,17 @@ class Admin::CarrierRequestsController < ApplicationController
   def accept
     ActiveRecord::Base.transaction do
       # Mark this offer as won
-      @carrier_request.update!(status: 'won')
+      @carrier_request.update!(status: "won")
 
       # Reject all other offers for this request
       @carrier_request.transport_request.carrier_requests
                       .where.not(id: @carrier_request.id)
-                      .where(status: 'offered')
-                      .update_all(status: 'rejected')
+                      .where(status: "offered")
+                      .update_all(status: "rejected")
 
       # Update transport request
       @carrier_request.transport_request.update!(
-        status: 'matched',
+        status: "matched",
         matched_carrier_id: @carrier_request.carrier_id
       )
 
@@ -34,22 +35,22 @@ class Admin::CarrierRequestsController < ApplicationController
 
       # Send rejection emails
       @carrier_request.transport_request.carrier_requests
-                      .where(status: 'rejected')
+                      .where(status: "rejected")
                       .each do |cr|
         CarrierMailer.offer_rejected(cr.id).deliver_later
       end
     end
 
     redirect_to admin_transport_request_path(@carrier_request.transport_request),
-                notice: 'Offer accepted successfully.'
+                notice: "Offer accepted successfully."
   end
 
   def reject
-    @carrier_request.update(status: 'rejected')
+    @carrier_request.update(status: "rejected")
     CarrierMailer.offer_rejected(@carrier_request.id).deliver_later
 
     redirect_to admin_transport_request_path(@carrier_request.transport_request),
-                notice: 'Offer rejected.'
+                notice: "Offer rejected."
   end
 
   private

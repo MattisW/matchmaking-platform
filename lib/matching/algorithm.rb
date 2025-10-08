@@ -28,11 +28,11 @@ module Matching
 
     def filter_by_vehicle_type(carriers)
       case transport_request.vehicle_type
-      when 'transporter'
+      when "transporter"
         carriers.where(has_transporter: true)
-      when 'lkw'
+      when "lkw"
         carriers.where(has_lkw: true)
-      when 'either', nil
+      when "either", nil
         carriers
       else
         carriers
@@ -76,7 +76,7 @@ module Matching
 
     def filter_by_capacity(carriers)
       # Only filter if LKW is required and dimensions are specified
-      return carriers unless transport_request.vehicle_type == 'lkw'
+      return carriers unless transport_request.vehicle_type == "lkw"
       return carriers unless transport_request.cargo_length_cm || transport_request.cargo_width_cm || transport_request.cargo_height_cm
 
       carriers.select do |carrier|
@@ -137,7 +137,7 @@ module Matching
         carrier_request = CarrierRequest.create!(
           transport_request: transport_request,
           carrier: carrier,
-          status: 'new',
+          status: "new",
           distance_to_pickup_km: distance_to_pickup&.round(2),
           distance_to_delivery_km: distance_to_delivery&.round(2),
           in_radius: in_radius

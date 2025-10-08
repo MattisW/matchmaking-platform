@@ -1,42 +1,55 @@
 Rails.application.routes.draw do
-  get "offers/show"
-  get "offers/create"
-  get "dashboard/index"
   devise_for :users
 
-  # Root path
+  # Locale switching (requires authentication)
+  post '/switch_locale', to: 'application#switch_locale', as: :switch_locale
+
+  # Authenticated root paths (role-based routing)
+  authenticated :user, ->(user) { user.admin_or_dispatcher? } do
+    root to: "dashboard#index", as: :admin_root
+  end
+
+  authenticated :user, ->(user) { user.customer? } do
+    root to: "customer/dashboard#show", as: :customer_root
+  end
+
+  # Fallback root for unauthenticated users
   root "dashboard#index"
 
   # Public offer submission (no authentication required)
-  resources :offers, only: [:show] do
+  resources :offers, only: [ :show ] do
     member do
       post :submit_offer
     end
   end
 
-  # Admin namespace (requires authentication)
+  # Customer namespace (requires customer authentication)
+  namespace :customer do
+    resource :dashboard, only: [ :show ]
+
+    resources :transport_requests do
+      member do
+        post :cancel
+      end
+
+      resource :quote, only: [] do
+        post :accept
+        post :decline
+      end
+
+      resources :carrier_requests, only: [] do
+        member do
+          post :accept
+          post :reject
+        end
+      end
+    end
+  end
+
+  # Admin namespace (requires admin authentication)
   namespace :admin do
-    get "carrier_requests/index"
-    get "carrier_requests/show"
-    get "carrier_requests/accept"
-    get "carrier_requests/reject"
-    get "transport_requests/index"
-    get "transport_requests/show"
-    get "transport_requests/new"
-    get "transport_requests/create"
-    get "transport_requests/edit"
-    get "transport_requests/update"
-    get "transport_requests/destroy"
-    get "transport_requests/run_matching"
-    get "transport_requests/cancel"
-    get "carriers/index"
-    get "carriers/show"
-    get "carriers/new"
-    get "carriers/create"
-    get "carriers/edit"
-    get "carriers/update"
-    get "carriers/destroy"
     resources :carriers
+    resources :pricing_rules
 
     resources :transport_requests do
       member do
@@ -45,7 +58,7 @@ Rails.application.routes.draw do
       end
     end
 
-    resources :carrier_requests, only: [:index, :show] do
+    resources :carrier_requests, only: [ :index, :show ] do
       member do
         post :accept
         post :reject

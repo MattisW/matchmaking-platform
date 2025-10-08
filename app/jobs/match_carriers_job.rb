@@ -15,7 +15,7 @@ class MatchCarriersJob < ApplicationJob
       SendCarrierInvitationsJob.perform_later(transport_request_id)
     else
       # No matches found, update status
-      transport_request.update(status: 'new')
+      transport_request.update(status: "new")
     end
   end
 end

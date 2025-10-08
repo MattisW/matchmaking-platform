@@ -1,0 +1,17 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  category: MyString
+  default_length_cm: 1
+  default_width_cm: 1
+  default_height_cm: 1
+  default_weight_kg: 9.99
+
+two:
+  name: MyString
+  category: MyString
+  default_length_cm: 1
+  default_width_cm: 1
+  default_height_cm: 1
+  default_weight_kg: 9.99

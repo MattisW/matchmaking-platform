@@ -5,10 +5,12 @@ class CarrierMailer < ApplicationMailer
     @transport_request = @carrier_request.transport_request
     @offer_url = offer_url(@carrier_request)
 
-    mail(
-      to: @carrier.contact_email,
-      subject: 'Neue Transportanfrage'
-    )
+    I18n.with_locale(@carrier.language&.to_sym || :de) do
+      mail(
+        to: @carrier.contact_email,
+        subject: t('carrier_mailer.invitation.subject')
+      )
+    end
   end
 
   def offer_accepted(carrier_request_id)
@@ -16,10 +18,12 @@ class CarrierMailer < ApplicationMailer
     @carrier = @carrier_request.carrier
     @transport_request = @carrier_request.transport_request
 
-    mail(
-      to: @carrier.contact_email,
-      subject: 'Ihr Angebot wurde angenommen'
-    )
+    I18n.with_locale(@carrier.language&.to_sym || :de) do
+      mail(
+        to: @carrier.contact_email,
+        subject: t('carrier_mailer.offer_accepted.subject')
+      )
+    end
   end
 
   def offer_rejected(carrier_request_id)
@@ -27,9 +31,11 @@ class CarrierMailer < ApplicationMailer
     @carrier = @carrier_request.carrier
     @transport_request = @carrier_request.transport_request
 
-    mail(
-      to: @carrier.contact_email,
-      subject: 'Transportanfrage wurde vergeben'
-    )
+    I18n.with_locale(@carrier.language&.to_sym || :de) do
+      mail(
+        to: @carrier.contact_email,
+        subject: t('carrier_mailer.offer_rejected.subject')
+      )
+    end
   end
 end

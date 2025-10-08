@@ -1,31 +1,321 @@
-# Files in the config/locales directory are used for internationalization and
-# are automatically loaded by Rails. If you want to use locales other than
-# English, add the necessary files in this directory.
-#
-# To use the locales, use `I18n.t`:
-#
-#     I18n.t "hello"
-#
-# In views, this is aliased to just `t`:
-#
-#     <%= t("hello") %>
-#
-# To use a different locale, set it with `I18n.locale`:
-#
-#     I18n.locale = :es
-#
-# This would use the information in config/locales/es.yml.
-#
-# To learn more about the API, please read the Rails Internationalization guide
-# at https://guides.rubyonrails.org/i18n.html.
-#
-# Be aware that YAML interprets the following case-insensitive strings as
-# booleans: `true`, `false`, `on`, `off`, `yes`, `no`. Therefore, these strings
-# must be quoted to be interpreted as strings. For example:
-#
-#     en:
-#       "yes": yup
-#       enabled: "ON"
-
 en:
-  hello: "Hello world"
+  # Navigation
+  navigation:
+    dashboard: "Dashboard"
+    carriers: "Carriers"
+    transport_requests: "Transport Requests"
+    my_requests: "My Requests"
+    logout: "Logout"
+
+  # Common actions
+  actions:
+    new: "New"
+    edit: "Edit"
+    delete: "Delete"
+    show: "Show"
+    back: "Back"
+    save: "Save"
+    cancel: "Cancel"
+    create: "Create"
+    update: "Update"
+    submit: "Submit"
+    search: "Search"
+    filter: "Filter"
+    view: "View"
+
+  # Flash messages
+  flash:
+    created: "%{model} was successfully created."
+    updated: "%{model} was successfully updated."
+    destroyed: "%{model} was successfully destroyed."
+    error: "An error occurred."
+
+  # Locale switcher
+  locale:
+    switched: "Language has been changed."
+    german: "Deutsch"
+    english: "English"
+
+  # Carriers
+  carriers:
+    index:
+      title: "Carriers"
+      new_carrier: "New Carrier"
+      company: "Company"
+      email: "Email"
+      country: "Country"
+      fleet: "Fleet"
+      actions: "Actions"
+    show:
+      overview: "Overview"
+      transport_history: "Transport History"
+      coverage_area: "Coverage Area"
+      equipment_fleet: "Equipment & Fleet"
+      contact_information: "Contact Information"
+      location: "Location"
+      fleet_overview: "Fleet Overview"
+      internal_notes: "Internal Notes"
+      stats:
+        total_jobs: "Total Jobs"
+        won_jobs: "Won Jobs"
+        success_rate: "Success Rate"
+        average_rating: "Average Rating"
+      transport_history_tab:
+        title: "Transport History"
+        status: "Status"
+        route: "Route"
+        date: "Date"
+        offer: "Offer"
+        no_history: "No transport requests yet."
+      coverage_tab:
+        service_radius: "Service Radius"
+        pickup_countries: "Pickup Countries"
+        delivery_countries: "Delivery Countries"
+        radius_info: "This carrier can pickup jobs within %{radius} km from their location."
+      equipment_tab:
+        vehicle_fleet: "Vehicle Fleet"
+        available_equipment: "Available Equipment"
+        performance_ratings: "Performance Ratings"
+        transporter: "Transporter"
+        lkw: "Truck"
+        light_delivery_vehicle: "Light delivery vehicle"
+        heavy_duty_truck: "Heavy-duty truck"
+        cargo_dimensions: "Cargo Dimensions"
+        length: "Length"
+        width: "Width"
+        height: "Height"
+        liftgate: "Liftgate"
+        pallet_jack: "Pallet Jack"
+        gps_tracking: "GPS Tracking"
+        hydraulic_loading_platform: "Hydraulic loading platform"
+        manual_pallet_handler: "Manual pallet handler"
+        real_time_location: "Real-time location"
+        communication: "Communication"
+        punctuality: "Punctuality"
+        responsiveness_clarity: "Responsiveness & clarity"
+        on_time_delivery: "On-time delivery"
+        overall_average_rating: "Overall Average Rating"
+        available: "Available"
+        not_available: "Not available"
+        yes: "Yes"
+        no: "No"
+    form:
+      company_name: "Company Name"
+      contact_email: "Contact Email"
+      contact_phone: "Contact Phone"
+      preferred_contact_method: "Preferred Contact Method"
+      language: "Language"
+      address: "Address"
+      country: "Country"
+      pickup_radius_km: "Pickup Radius (km)"
+      ignore_radius: "Ignore Radius"
+      pickup_countries: "Pickup Countries"
+      delivery_countries: "Delivery Countries"
+      has_transporter: "Has Transporter"
+      has_lkw: "Has Truck"
+      lkw_dimensions: "Truck Dimensions"
+      equipment: "Equipment"
+      has_liftgate: "Has Liftgate"
+      has_pallet_jack: "Has Pallet Jack"
+      has_gps_tracking: "Has GPS Tracking"
+      rating_communication: "Communication Rating"
+      rating_punctuality: "Punctuality Rating"
+      blacklisted: "Blacklisted"
+      notes: "Notes"
+
+  # Transport Requests
+  transport_requests:
+    index:
+      title: "Transport Requests"
+      new_request: "New Request"
+      status: "Status"
+      route: "Route"
+      pickup_date: "Pickup Date"
+      delivery_date: "Delivery Date"
+      actions: "Actions"
+    show:
+      title: "Transport Request Details"
+      route_information: "Route Information"
+      cargo_details: "Cargo Details"
+      requirements: "Requirements"
+      matched_carriers: "Matched Carriers"
+      offers_received: "Offers Received"
+      run_matching: "Run Matching"
+    created_with_quote: "Request created. Your quote has been generated."
+    created_no_quote: "Request created but quote could not be generated. Please contact support."
+    form:
+      start_address: "Start Address"
+      destination_address: "Destination Address"
+      pickup_date_from: "Pickup Date From"
+      pickup_date_to: "Pickup Date To"
+      pickup_time_from: "Pickup Time From"
+      pickup_time_to: "Pickup Time To"
+      delivery_date_from: "Delivery Date From"
+      delivery_date_to: "Delivery Date To"
+      delivery_time_from: "Delivery Time From"
+      delivery_time_to: "Delivery Time To"
+      vehicle_type: "Vehicle Type"
+      shipping_mode: "Shipping Mode"
+      cargo_dimensions: "Cargo Dimensions"
+      cargo_length_cm: "Length (cm)"
+      cargo_width_cm: "Width (cm)"
+      cargo_height_cm: "Height (cm)"
+      cargo_weight_kg: "Weight (kg)"
+      requirements: "Requirements"
+      requires_liftgate: "Requires Liftgate"
+      requires_pallet_jack: "Requires Pallet Jack"
+      requires_side_loading: "Requires Side Loading"
+      requires_tarp: "Requires Tarp"
+      requires_gps_tracking: "Requires GPS Tracking"
+      driver_language: "Driver Language"
+    shipping_modes:
+      packages: "Packages"
+      loading_meters: "Loading Meters"
+      vehicle_booking: "Vehicle Booking"
+    vehicle_types:
+      transporter: "Transporter"
+      lkw: "Truck"
+      either: "Either"
+
+  # Carrier Requests (Offers)
+  carrier_requests:
+    index:
+      title: "Offers"
+      carrier: "Carrier"
+      status: "Status"
+      price: "Price"
+      delivery_date: "Delivery Date"
+      actions: "Actions"
+    show:
+      title: "Offer Details"
+      accept: "Accept"
+      reject: "Reject"
+    statuses:
+      new: "New"
+      sent: "Sent"
+      offered: "Offered"
+      won: "Won"
+      rejected: "Rejected"
+
+  # Customer Dashboard
+  customer:
+    dashboard:
+      title: "Dashboard"
+      recent_requests: "Recent Requests"
+      active_requests: "Active Requests"
+      pending_offers: "Pending Offers"
+      no_requests: "No transport requests yet."
+      create_first_request: "Create your first transport request."
+
+  # Mailer
+  carrier_mailer:
+    invitation:
+      subject: "New Transport Request"
+      greeting: "Hello,"
+      intro: "There is a new transport request that matches your profile:"
+      route: "Route"
+      pickup_date: "Pickup Date"
+      delivery_date: "Delivery Date"
+      cargo: "Cargo"
+      submit_offer: "Submit Offer"
+      thank_you: "Thank you for your cooperation!"
+    offer_accepted:
+      subject: "Your Offer Has Been Accepted"
+      greeting: "Hello,"
+      congratulations: "Congratulations! Your offer has been accepted."
+      transport_details: "Transport Details"
+      next_steps: "Next Steps"
+    offer_rejected:
+      subject: "Transport Request Awarded to Another Carrier"
+      greeting: "Hello,"
+      info: "The transport request has been awarded to another carrier."
+      thank_you: "Thank you for your offer. We look forward to future collaboration."
+
+  # Status values
+  statuses:
+    new: "New"
+    matching: "Matching"
+    matched: "Matched"
+    in_transit: "In Transit"
+    delivered: "Delivered"
+    cancelled: "Cancelled"
+
+  # Common
+  common:
+    yes: "Yes"
+    no: "No"
+    optional: "Optional"
+    required: "Required"
+    loading: "Loading..."
+    error: "Error"
+    success: "Success"
+    warning: "Warning"
+    info: "Info"
+    confirm: "Are you sure?"
+    empty_state: "No data available"
+
+  # Pricing Rules
+  pricing_rules:
+    title: "Pricing Rules"
+    new: "New Pricing Rule"
+    edit: "Edit Pricing Rule"
+    created: "Pricing rule created successfully."
+    updated: "Pricing rule updated successfully."
+    destroyed: "Pricing rule deleted successfully."
+    confirm_delete: "Are you sure you want to delete this pricing rule?"
+    no_rules: "No pricing rules available."
+    new_description: "Create a new pricing rule for a vehicle type."
+    vehicle_type: "Vehicle Type"
+    rate_per_km: "Rate per km"
+    minimum_price: "Minimum Price"
+    weekend_surcharge: "Weekend Surcharge"
+    express_surcharge: "Express Surcharge"
+    status: "Status"
+    active: "Active"
+    inactive: "Inactive"
+    active_label: "Pricing rule is active"
+    select_vehicle_type: "Select vehicle type"
+    weekend_help: "Additional percentage for weekend pickups"
+    express_help: "Additional percentage for express deliveries (within 24 hours)"
+    vehicle_types:
+      transporter: "Transporter"
+      lkw_7_5t: "Truck 7.5t"
+      lkw_12t: "Truck 12t"
+      lkw_18t: "Truck 18t"
+      lkw_24t: "Truck 24t"
+      sprinter: "Sprinter"
+      any: "Any"
+
+  # Quotes
+  quotes:
+    title: "Quote"
+    status:
+      pending: "Pending"
+      accepted: "Accepted"
+      declined: "Declined"
+      expired: "Expired"
+    line_items:
+      base_transport: "Base Transport Cost"
+      weekend_surcharge: "Weekend Surcharge"
+      express_surcharge: "Express Surcharge"
+      surcharge: "Surcharge"
+      total: "Total"
+    actions:
+      accept: "Accept Quote"
+      decline: "Decline Quote"
+      review: "Review Quote"
+    messages:
+      review_quote: "Please review your quote and accept it to proceed."
+      accept_to_continue: "Accept the quote to start the carrier search."
+      quote_accepted: "Quote accepted. Searching for carriers..."
+      quote_declined: "Quote declined."
+      no_quote: "No quote available."
+    accepted: "Quote has been accepted. Carriers are now being searched."
+    declined: "Quote has been declined."
+    accept_failed: "Could not accept quote."
+    decline_failed: "Could not decline quote."
+    not_found: "No quote found."
+    breakdown: "Breakdown"
+    description: "Description"
+    calculation: "Calculation"
+    amount: "Amount"

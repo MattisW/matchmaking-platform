@@ -37,6 +37,19 @@
     </div>
   </dl>
 
+  <% if @transport_request.start_latitude && @transport_request.destination_latitude %>
+    <div class="mb-6">
+      <h3 class="text-lg font-semibold mb-3">Route Map</h3>
+      <div data-controller="map"
+           data-map-start-lat-value="<%= @transport_request.start_latitude %>"
+           data-map-start-lng-value="<%= @transport_request.start_longitude %>"
+           data-map-dest-lat-value="<%= @transport_request.destination_latitude %>"
+           data-map-dest-lng-value="<%= @transport_request.destination_longitude %>">
+        <div data-map-target="container" style="height: 400px; width: 100%; border-radius: 0.5rem;"></div>
+      </div>
+    </div>
+  <% end %>
+
   <% if @carrier_requests.any? %>
     <h2 class="text-xl font-bold mt-8 mb-4">Matched Carriers (<%= @carrier_requests.count %>)</h2>
     <div class="overflow-x-auto">

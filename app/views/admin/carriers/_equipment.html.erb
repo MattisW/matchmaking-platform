@@ -1,0 +1,220 @@
+<h3 class="text-lg font-semibold text-gray-900 mb-4">Equipment & Fleet Details</h3>
+
+<!-- Fleet Capabilities -->
+<div class="mb-6">
+  <h4 class="text-md font-semibold text-gray-800 mb-3">Vehicle Fleet</h4>
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+    <!-- Transporter Card -->
+    <div class="<%= carrier.has_transporter ? 'bg-blue-50 border-blue-200' : 'bg-gray-50 border-gray-200' %> border rounded-lg p-4">
+      <div class="flex items-center mb-2">
+        <div class="text-3xl mr-3">🚐</div>
+        <div>
+          <h5 class="font-semibold text-gray-900">Transporter</h5>
+          <p class="text-sm text-gray-600">Light delivery vehicle</p>
+        </div>
+      </div>
+      <div class="mt-3">
+        <% if carrier.has_transporter %>
+          <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-green-100 text-green-800">
+            ✓ Available
+          </span>
+        <% else %>
+          <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-gray-200 text-gray-600">
+            Not available
+          </span>
+        <% end %>
+      </div>
+    </div>
+
+    <!-- LKW Card -->
+    <div class="<%= carrier.has_lkw ? 'bg-green-50 border-green-200' : 'bg-gray-50 border-gray-200' %> border rounded-lg p-4">
+      <div class="flex items-center mb-2">
+        <div class="text-3xl mr-3">🚚</div>
+        <div>
+          <h5 class="font-semibold text-gray-900">LKW (Truck)</h5>
+          <p class="text-sm text-gray-600">Heavy-duty truck</p>
+        </div>
+      </div>
+      <div class="mt-3">
+        <% if carrier.has_lkw %>
+          <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-green-100 text-green-800">
+            ✓ Available
+          </span>
+          <% if carrier.lkw_length_cm || carrier.lkw_width_cm || carrier.lkw_height_cm %>
+            <div class="mt-3 text-sm text-gray-700">
+              <div class="font-medium mb-1">Cargo Dimensions:</div>
+              <div class="space-y-1">
+                <% if carrier.lkw_length_cm %>
+                  <div>Length: <span class="font-semibold"><%= carrier.lkw_length_cm %> cm</span></div>
+                <% end %>
+                <% if carrier.lkw_width_cm %>
+                  <div>Width: <span class="font-semibold"><%= carrier.lkw_width_cm %> cm</span></div>
+                <% end %>
+                <% if carrier.lkw_height_cm %>
+                  <div>Height: <span class="font-semibold"><%= carrier.lkw_height_cm %> cm</span></div>
+                <% end %>
+              </div>
+            </div>
+          <% end %>
+        <% else %>
+          <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-gray-200 text-gray-600">
+            Not available
+          </span>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Equipment -->
+<div class="mb-6">
+  <h4 class="text-md font-semibold text-gray-800 mb-3">Available Equipment</h4>
+  <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+    <!-- Liftgate -->
+    <div class="<%= carrier.has_liftgate ? 'bg-purple-50 border-purple-200' : 'bg-gray-50 border-gray-200' %> border rounded-lg p-4">
+      <div class="flex items-start">
+        <div class="text-2xl mr-3">↕️</div>
+        <div class="flex-1">
+          <h5 class="font-semibold text-gray-900 text-sm">Liftgate</h5>
+          <p class="text-xs text-gray-600 mt-1">Hydraulic loading platform</p>
+          <div class="mt-2">
+            <% if carrier.has_liftgate %>
+              <span class="inline-flex items-center px-2 py-0.5 rounded text-xs font-medium bg-green-100 text-green-800">
+                ✓ Yes
+              </span>
+            <% else %>
+              <span class="inline-flex items-center px-2 py-0.5 rounded text-xs font-medium bg-gray-200 text-gray-600">
+                No
+              </span>
+            <% end %>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Pallet Jack -->
+    <div class="<%= carrier.has_pallet_jack ? 'bg-orange-50 border-orange-200' : 'bg-gray-50 border-gray-200' %> border rounded-lg p-4">
+      <div class="flex items-start">
+        <div class="text-2xl mr-3">🔧</div>
+        <div class="flex-1">
+          <h5 class="font-semibold text-gray-900 text-sm">Pallet Jack</h5>
+          <p class="text-xs text-gray-600 mt-1">Manual pallet handler</p>
+          <div class="mt-2">
+            <% if carrier.has_pallet_jack %>
+              <span class="inline-flex items-center px-2 py-0.5 rounded text-xs font-medium bg-green-100 text-green-800">
+                ✓ Yes
+              </span>
+            <% else %>
+              <span class="inline-flex items-center px-2 py-0.5 rounded text-xs font-medium bg-gray-200 text-gray-600">
+                No
+              </span>
+            <% end %>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- GPS Tracking -->
+    <div class="<%= carrier.has_gps_tracking ? 'bg-indigo-50 border-indigo-200' : 'bg-gray-50 border-gray-200' %> border rounded-lg p-4">
+      <div class="flex items-start">
+        <div class="text-2xl mr-3">📍</div>
+        <div class="flex-1">
+          <h5 class="font-semibold text-gray-900 text-sm">GPS Tracking</h5>
+          <p class="text-xs text-gray-600 mt-1">Real-time location</p>
+          <div class="mt-2">
+            <% if carrier.has_gps_tracking %>
+              <span class="inline-flex items-center px-2 py-0.5 rounded text-xs font-medium bg-green-100 text-green-800">
+                ✓ Yes
+              </span>
+            <% else %>
+              <span class="inline-flex items-center px-2 py-0.5 rounded text-xs font-medium bg-gray-200 text-gray-600">
+                No
+              </span>
+            <% end %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Ratings -->
+<div class="mb-6">
+  <h4 class="text-md font-semibold text-gray-800 mb-3">Performance Ratings</h4>
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+    <!-- Communication Rating -->
+    <div class="bg-blue-50 border border-blue-200 rounded-lg p-4">
+      <div class="flex justify-between items-start mb-2">
+        <div>
+          <h5 class="font-semibold text-gray-900">Communication</h5>
+          <p class="text-xs text-gray-600">Responsiveness & clarity</p>
+        </div>
+        <div class="text-right">
+          <div class="text-2xl font-bold text-blue-900">
+            <%= carrier.rating_communication || '-' %>
+          </div>
+          <div class="text-xs text-gray-600">/ 5.0</div>
+        </div>
+      </div>
+      <% if carrier.rating_communication %>
+        <div class="flex items-center">
+          <% 5.times do |i| %>
+            <% if i < carrier.rating_communication.to_i %>
+              <svg class="w-5 h-5 text-yellow-400 fill-current" viewBox="0 0 20 20">
+                <path d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z"/>
+              </svg>
+            <% else %>
+              <svg class="w-5 h-5 text-gray-300 fill-current" viewBox="0 0 20 20">
+                <path d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z"/>
+              </svg>
+            <% end %>
+          <% end %>
+        </div>
+      <% end %>
+    </div>
+
+    <!-- Punctuality Rating -->
+    <div class="bg-green-50 border border-green-200 rounded-lg p-4">
+      <div class="flex justify-between items-start mb-2">
+        <div>
+          <h5 class="font-semibold text-gray-900">Punctuality</h5>
+          <p class="text-xs text-gray-600">On-time delivery</p>
+        </div>
+        <div class="text-right">
+          <div class="text-2xl font-bold text-green-900">
+            <%= carrier.rating_punctuality || '-' %>
+          </div>
+          <div class="text-xs text-gray-600">/ 5.0</div>
+        </div>
+      </div>
+      <% if carrier.rating_punctuality %>
+        <div class="flex items-center">
+          <% 5.times do |i| %>
+            <% if i < carrier.rating_punctuality.to_i %>
+              <svg class="w-5 h-5 text-yellow-400 fill-current" viewBox="0 0 20 20">
+                <path d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z"/>
+              </svg>
+            <% else %>
+              <svg class="w-5 h-5 text-gray-300 fill-current" viewBox="0 0 20 20">
+                <path d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z"/>
+              </svg>
+            <% end %>
+          <% end %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+
+  <% if @average_rating > 0 %>
+    <div class="mt-4 p-3 bg-yellow-50 border border-yellow-200 rounded-lg">
+      <div class="flex items-center">
+        <svg class="w-5 h-5 text-yellow-600 mr-2" fill="currentColor" viewBox="0 0 20 20">
+          <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
+        </svg>
+        <span class="text-sm font-medium text-yellow-800">
+          Overall Average Rating: <span class="font-bold"><%= @average_rating %> / 5.0</span>
+        </span>
+      </div>
+    </div>
+  <% end %>
+</div>

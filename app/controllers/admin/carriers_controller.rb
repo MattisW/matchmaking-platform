@@ -1,7 +1,8 @@
 class Admin::CarriersController < ApplicationController
-  layout 'admin'
+  layout "admin"
   before_action :authenticate_user!
-  before_action :set_carrier, only: [:show, :edit, :update, :destroy]
+  before_action :ensure_admin!
+  before_action :set_carrier, only: [ :show, :edit, :update, :destroy ]
 
   def index
     @carriers = Carrier.includes(:carrier_requests).order(created_at: :desc).page(params[:page])
@@ -9,6 +10,17 @@ class Admin::CarriersController < ApplicationController
 
   def show
     @carrier_requests = @carrier.carrier_requests.includes(:transport_request).order(created_at: :desc).page(params[:page])
+
+    # Calculate statistics for overview tab
+    @total_jobs = @carrier.carrier_requests.count
+    @won_jobs = @carrier.carrier_requests.won.count
+    @total_offers = @carrier.carrier_requests.offered.count
+    @rejected_offers = @carrier.carrier_requests.where(status: 'rejected').count
+    @success_rate = @total_offers > 0 ? (@won_jobs.to_f / @total_offers * 100).round(1) : 0
+
+    # Calculate average rating
+    ratings = [@carrier.rating_communication, @carrier.rating_punctuality].compact
+    @average_rating = ratings.any? ? (ratings.sum / ratings.size.to_f).round(1) : 0
   end
 
   def new
@@ -19,7 +31,7 @@ class Admin::CarriersController < ApplicationController
     @carrier = Carrier.new(carrier_params)
 
     if @carrier.save
-      redirect_to admin_carrier_path(@carrier), notice: 'Carrier was successfully created.'
+      redirect_to admin_carrier_path(@carrier), notice: "Carrier was successfully created."
     else
       render :new, status: :unprocessable_entity
     end
@@ -30,7 +42,7 @@ class Admin::CarriersController < ApplicationController
 
   def update
     if @carrier.update(carrier_params)
-      redirect_to admin_carrier_path(@carrier), notice: 'Carrier was successfully updated.'
+      redirect_to admin_carrier_path(@carrier), notice: "Carrier was successfully updated."
     else
       render :edit, status: :unprocessable_entity
     end
@@ -38,7 +50,7 @@ class Admin::CarriersController < ApplicationController
 
   def destroy
     @carrier.destroy
-    redirect_to admin_carriers_path, notice: 'Carrier was successfully deleted.'
+    redirect_to admin_carriers_path, notice: "Carrier was successfully deleted."
   end
 
   private

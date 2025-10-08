@@ -12,10 +12,10 @@ class OffersController < ApplicationController
 
     if @carrier_request.update(offer_params)
       @carrier_request.update(
-        status: 'offered',
+        status: "offered",
         response_date: Time.current
       )
-      redirect_to offer_path(@carrier_request), notice: 'Ihr Angebot wurde erfolgreich übermittelt.'
+      redirect_to offer_path(@carrier_request), notice: "Ihr Angebot wurde erfolgreich übermittelt."
     else
       @transport_request = @carrier_request.transport_request
       @carrier = @carrier_request.carrier

@@ -1,0 +1,143 @@
+<h3 class="text-lg font-semibold text-gray-900 mb-4">Transport Request History</h3>
+
+<!-- Summary Stats -->
+<div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
+  <div class="bg-gray-50 rounded-lg p-4">
+    <div class="text-sm text-gray-600">Total Invitations</div>
+    <div class="text-2xl font-bold text-gray-900"><%= @total_jobs %></div>
+  </div>
+
+  <div class="bg-green-50 rounded-lg p-4">
+    <div class="text-sm text-green-600">Offers Submitted</div>
+    <div class="text-2xl font-bold text-green-900"><%= @total_offers %></div>
+  </div>
+
+  <div class="bg-blue-50 rounded-lg p-4">
+    <div class="text-sm text-blue-600">Jobs Won</div>
+    <div class="text-2xl font-bold text-blue-900"><%= @won_jobs %></div>
+  </div>
+</div>
+
+<!-- Carrier Requests Table -->
+<% if carrier_requests.any? %>
+  <div class="overflow-x-auto">
+    <table class="min-w-full divide-y divide-gray-200">
+      <thead class="bg-gray-50">
+        <tr>
+          <th scope="col" class="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+            Date
+          </th>
+          <th scope="col" class="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+            Transport Request
+          </th>
+          <th scope="col" class="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+            Route
+          </th>
+          <th scope="col" class="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+            Distance
+          </th>
+          <th scope="col" class="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+            Status
+          </th>
+          <th scope="col" class="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+            Offer
+          </th>
+          <th scope="col" class="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+            Actions
+          </th>
+        </tr>
+      </thead>
+      <tbody class="bg-white divide-y divide-gray-200">
+        <% carrier_requests.each do |cr| %>
+          <tr class="hover:bg-gray-50">
+            <!-- Date -->
+            <td class="px-4 py-3 whitespace-nowrap text-sm text-gray-900">
+              <%= cr.created_at.strftime("%d.%m.%Y") %>
+            </td>
+
+            <!-- Transport Request ID -->
+            <td class="px-4 py-3 whitespace-nowrap text-sm font-medium">
+              <%= link_to "##{cr.transport_request.id}", admin_transport_request_path(cr.transport_request),
+                  class: "text-blue-600 hover:text-blue-800" %>
+            </td>
+
+            <!-- Route -->
+            <td class="px-4 py-3 text-sm text-gray-900">
+              <div class="max-w-xs truncate">
+                <%= cr.transport_request.start_city || cr.transport_request.start_country %>
+                →
+                <%= cr.transport_request.destination_city || cr.transport_request.destination_country %>
+              </div>
+            </td>
+
+            <!-- Distance -->
+            <td class="px-4 py-3 whitespace-nowrap text-sm text-gray-600">
+              <% if cr.distance_to_pickup_km %>
+                <%= number_with_precision(cr.distance_to_pickup_km, precision: 0) %> km
+              <% else %>
+                <span class="text-gray-400">-</span>
+              <% end %>
+            </td>
+
+            <!-- Status -->
+            <td class="px-4 py-3 whitespace-nowrap">
+              <% case cr.status %>
+              <% when 'won' %>
+                <span class="px-2 py-1 text-xs font-medium rounded-full bg-green-100 text-green-800">
+                  ✓ Won
+                </span>
+              <% when 'offered' %>
+                <span class="px-2 py-1 text-xs font-medium rounded-full bg-blue-100 text-blue-800">
+                  📝 Offered
+                </span>
+              <% when 'rejected' %>
+                <span class="px-2 py-1 text-xs font-medium rounded-full bg-red-100 text-red-800">
+                  ✗ Rejected
+                </span>
+              <% when 'sent' %>
+                <span class="px-2 py-1 text-xs font-medium rounded-full bg-yellow-100 text-yellow-800">
+                  📧 Sent
+                </span>
+              <% else %>
+                <span class="px-2 py-1 text-xs font-medium rounded-full bg-gray-100 text-gray-800">
+                  <%= cr.status&.capitalize || 'New' %>
+                </span>
+              <% end %>
+            </td>
+
+            <!-- Offer Details -->
+            <td class="px-4 py-3 text-sm text-gray-900">
+              <% if cr.offered_price %>
+                <div class="font-medium">€<%= number_with_precision(cr.offered_price, precision: 2) %></div>
+                <% if cr.offered_delivery_date %>
+                  <div class="text-xs text-gray-500"><%= cr.offered_delivery_date.strftime("%d.%m.%Y") %></div>
+                <% end %>
+              <% else %>
+                <span class="text-gray-400">-</span>
+              <% end %>
+            </td>
+
+            <!-- Actions -->
+            <td class="px-4 py-3 whitespace-nowrap text-sm">
+              <%= link_to "View", admin_carrier_request_path(cr),
+                  class: "text-blue-600 hover:text-blue-800" %>
+            </td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- Pagination -->
+  <div class="mt-4">
+    <%= paginate carrier_requests %>
+  </div>
+<% else %>
+  <div class="text-center py-12 bg-gray-50 rounded-lg">
+    <svg class="mx-auto h-12 w-12 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 13V6a2 2 0 00-2-2H6a2 2 0 00-2 2v7m16 0v5a2 2 0 01-2 2H6a2 2 0 01-2-2v-5m16 0h-2.586a1 1 0 00-.707.293l-2.414 2.414a1 1 0 01-.707.293h-3.172a1 1 0 01-.707-.293l-2.414-2.414A1 1 0 006.586 13H4" />
+    </svg>
+    <h3 class="mt-2 text-sm font-medium text-gray-900">No transport history</h3>
+    <p class="mt-1 text-sm text-gray-500">This carrier has not been invited to any transport requests yet.</p>
+  </div>
+<% end %>

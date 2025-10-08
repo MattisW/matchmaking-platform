@@ -20,7 +20,7 @@ class Carrier < ApplicationRecord
   validates :rating_punctuality, numericality: { greater_than_or_equal_to: 0, less_than_or_equal_to: 5, allow_nil: true }
 
   # Scopes
-  scope :active, -> { where(blacklisted: [false, nil]) }
+  scope :active, -> { where(blacklisted: [ false, nil ]) }
   scope :recent, -> { order(created_at: :desc) }
   scope :with_transporter, -> { where(has_transporter: true) }
   scope :with_lkw, -> { where(has_lkw: true) }

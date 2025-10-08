@@ -5,7 +5,7 @@ class SendCarrierInvitationsJob < ApplicationJob
     transport_request = TransportRequest.find(transport_request_id)
 
     # Get all pending carrier requests for this transport request
-    carrier_requests = transport_request.carrier_requests.where(status: 'new')
+    carrier_requests = transport_request.carrier_requests.where(status: "new")
 
     carrier_requests.each do |carrier_request|
       # Send invitation email
@@ -13,7 +13,7 @@ class SendCarrierInvitationsJob < ApplicationJob
 
       # Update carrier request status
       carrier_request.update(
-        status: 'sent',
+        status: "sent",
         email_sent_at: Time.current
       )
     end
